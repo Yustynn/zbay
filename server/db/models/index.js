@@ -4,3 +4,4 @@
 require('./user');
 require('./review');
 require('./sentEmailCollection');
+require('./product');
