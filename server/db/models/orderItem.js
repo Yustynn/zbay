@@ -1,7 +1,7 @@
 'use strict';
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   product : {
     type : mongoose.Schema.Types.ObjectId,
     ref : 'Product',

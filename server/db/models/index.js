@@ -5,3 +5,6 @@ require('./user');
 require('./review');
 require('./sentEmailCollection');
 require('./product');
+require('./order');
+require('./orderItem');
+require('./category');
