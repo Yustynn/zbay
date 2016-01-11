@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
 	text: {
 		type: String, 
 		required: true
-	}
+	},
 	starRating: {
 		type: Number, 
 		required: true
