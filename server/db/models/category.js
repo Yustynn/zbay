@@ -3,12 +3,9 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   name : {
-    type : String
-  },
-  products : [{
-    type : mongoose.Schema.Types.ObjectId,
-    ref : 'Product'
-  }]
+    type : String,
+    required : true
+  }
 });
 
 mongoose.model('Category', schema);
