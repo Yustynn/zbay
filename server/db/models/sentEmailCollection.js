@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+  }
 	complete: {
-		type: Boolean, 
+		type: Boolean,
 		default: false
 	},
 	processing: {
@@ -10,7 +14,7 @@ const schema = new mongoose.Schema({
 		default: false
 	},
 	shipped: {
-		type: Boolean, 
+		type: Boolean,
 		default: false
 	},
 	delivered: {
