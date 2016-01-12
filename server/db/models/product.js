@@ -16,7 +16,7 @@ const schema = new mongoose.Schema({
   photoUrls: [String],
   defaultPhotoUrl: String,
   reviews: [{
-    type: mongoose.schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Review'
   }],
   stock: [{

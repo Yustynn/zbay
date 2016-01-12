@@ -41,7 +41,18 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
-    }
+    },
+    shipping : {
+        line1 : String,
+        line2 : String,
+        zip : String,
+        city : String,
+        state : String
+    },
+    cart : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'OrderItem'
+    }]
 });
 
 // method to remove sensitive information from user objects before sending them out
