@@ -1,10 +1,10 @@
 'use strict';
 
 var router = require('express').Router();
+var mongoose = require('mongoose');
 module.exports = router;
-var _ = require('lodash');
-var bodyParser = require('body-parser');
-var Review = require('../../db/review.js');
+
+var Review = mongoose.model('Review');
 
 
 router.use(bodyParser.json());
@@ -12,37 +12,36 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 router.get('/',function(req,res,next){
 	Review.find({})
-	.then(reviews => res.send(reviews))
+	.then(reviews => res.json(reviews))
 	.then(null,next)
 });
 
-router.get('/:review',function(req,res,next){
-	Review.find({_id: req.params.review})
-	.then(review => res.send(review))
+router.get('/:id',function(req,res,next){
+	Review.findById(req.params.id)
+	.then(review => res.json(review))
 	.then(null,next)
 });
 
-router.put('/:reviewId',function(req,res,next){
-	Review.findByIdAndUpdate(req.params.reviewId, req.body, {new: true})
-	.then(review => res.send(review))
+router.put('/:id',function(req,res,next){
+	Review.findByIdAndUpdate(req.params.id, req.body, {new: true})
+	.then(review => res.json(review))
 	.then(null,next);
 });
 
 
-router.post('/:review',function(req,res,next){
+router.post('/:id',function(req,res,next){
 	Review.create({
 		user: req.body.user,
 		product: req.body.product,
 		text: req.body.text,
 		starRating: req.body.starRating
 	})
-	.then(review => res.send(review))
+	.then(review => res.json(review))
 	.then(null,next)
 });
 
-router.delete('/:review',function(req,res,next){
-	Review.find({_id: req.params.review})
-	.then(review => review.remove()
-	.then(res.redirect('')))
-	.then(null,next);
-})
+router.delete('/:id',function(req,res,next){
+	Review.findByIdAndRemove(req.params.id)
+	.then(review => res.redirect(''))
+	.then(null,next)	
+});

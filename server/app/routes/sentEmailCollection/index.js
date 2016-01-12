@@ -1,10 +1,10 @@
 'use strict';
 
 var router = require('express').Router();
+var mongoose = require('mongoose');
 module.exports = router;
-var _ = require('lodash');
-var bodyParser = require('body-parser');
-var SentEmailCollection = require('../../db/sentEmailCollection.js');
+
+var SentEmailCollection = mongoose.model('SentEmailCollection')
 
 
 router.use(bodyParser.json());
@@ -12,36 +12,36 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 router.get('/',function(req,res,next){
 	SentEmailCollection.find({})
-	.then(emailCollections => res.send(emailCollection))
+	.then(emailCollections => res.json(emailCollection))
 	.then(null,next);
 });
 
-router.get('/:emailCollection',function(req,res,next){
-	SentEmailCollection.find({_id: req.params.emailCollection})
-	.then(emailCollection => res.send(emailCollection))
+router.get('/:id',function(req,res,next){
+	SentEmailCollectionById.find(req.params.id)
+	.then(emailCollection => res.json(emailCollection))
 	.then(null,next);
 });
 
-router.put('/:emailCollectionId',function(req,res,next){
-	SentEmailCollection.findByIdAndUpdate(req.params.userId, req.body, {new: true})
-	.then(emailCollection => res.send(emailCollection))
+router.put('/:id',function(req,res,next){
+	SentEmailCollection.findByIdAndUpdate(req.params.id, req.body, {new: true})
+	.then(emailCollection => res.json(emailCollection))
 	.then(null,next);
 });
 
 
-router.post('/:emailCollection',function(req,res,next){
+router.post('/:id',function(req,res,next){
 	SentEmailCollection.create({
 		complete: req.body.complete,
 		processing: req.body.processing,
 		shipped: req.body.shipped,
 		delivered: req.body.delivered
-	}).then(emailCollection => res.send(emailCollection))
+	})
+	.then(emailCollection => res.json(emailCollection))
 	.then(null,next)
 });
 
-router.delete('/:emailCollection',function(req,res,next){
-	User.find({_id: req.params.emailCollection})
-	.then(emailCollection => emailCollection.remove()
-	.then(res.redirect('')))
-	.then(null,next);
+router.delete('/:id',function(req,res,next){
+	SentEmailCollection.findByIdAndRemove(req.params.id)
+	.then(emailCollection => res.redirect(''))
+	.then(null,next)	
 });
