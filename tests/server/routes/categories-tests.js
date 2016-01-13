@@ -52,7 +52,7 @@ describe('Categories Route', function() {
     clearDB(done);
   });
 
-  describe('Guest user request', function() {
+  describe('Guest user', function() {
 
     var guestUserAgent;
 
@@ -61,7 +61,7 @@ describe('Categories Route', function() {
         done();
     });
 
-    describe('registered user can', () => {
+    describe('should be able to', () => {
       describe('read all categories', () => {
         it('should get with 200 response and with all categories', done => {
           guestUserAgent.get('/api/categories')
@@ -74,7 +74,7 @@ describe('Categories Route', function() {
       })
     })
 
-    describe('registered user cannot', () => {
+    describe('should not be able to', () => {
 
       describe('add a category', () => {
         it('should get with 401 response', done => {
@@ -117,7 +117,7 @@ describe('Categories Route', function() {
     })
   });
 
-  describe('Registered user request', function() {
+  describe('Registered user', function() {
 
     var registeredUserAgent;
 
@@ -136,7 +136,7 @@ describe('Categories Route', function() {
         })
     });
 
-    describe('registered user can', () => {
+    describe('should be able to', () => {
       describe('read all categories', () => {
         it('should get with 200 response and with all categories', done => {
           registeredUserAgent.get('/api/categories')
@@ -149,7 +149,7 @@ describe('Categories Route', function() {
       })
     })
 
-    describe('registered user cannot', () => {
+    describe('should not be able to', () => {
 
       describe('add a category', () => {
         it('should get with 401 response', done => {
