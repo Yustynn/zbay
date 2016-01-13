@@ -43,5 +43,5 @@ connectToDb.then(function () {
   });
 });
 
-modules.exports = seedCategories;
+module.exports = seedCategories;
 

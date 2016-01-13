@@ -20,43 +20,47 @@ name in the environment files.
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var chalk = require('chalk');
-var connectToDb = require('./server/db');
+var connectToDb = require('../server/db');
 var Product = Promise.promisifyAll(mongoose.model('Product'));
 
-function seedProducts() {
-  var products = [{
+var seedProducts = function() {
+  var products = [
+    {
       title: "'The Hook' Crowbar",
       description: "This ain't your father's crowbar. Smash some heads in!"
-  },
-  {
+    },
+    {
       title: "'The Pacifier' Baseball Bat",
       description: "Trying to go to sleep, but zombies keeping you up at night? Give 'em something to suck on.'"
-  },
-  {
+    },
+    {
       title: "The Walking Dead",
       description: "Makeup to make you look like a zombie. Just don't break character (walk like the dead)"
-  },
-  {
+    },
+    {
       title: "Perfume",
       description: "Smell good while killing zombies. They'll thank you for it."
-  }]
+    }
+  ]
 
   return Product.createAsync(products);
 }
 
-connectToDb.then(function () {
-    Product.findAsync({}).then(function (products) {
-        if (products.length === 0) {
-            return seedProducts();
-        } else {
-            console.log(chalk.magenta('Seems to already be product data, exiting!'));
-            process.kill(0);
-        }
-    }).then(function () {
-        console.log(chalk.green('Seed successful!'));
-        process.kill(0);
-    }).catch(function (err) {
-        console.error(err);
-        process.kill(1);
-    });
-});
+//connectToDb.then(function () {
+//    Product.findAsync({}).then(function (products) {
+//        if (products.length === 0) {
+//            return seedProducts();
+//        } else {
+//            console.log(chalk.magenta('Seems to already be product data, exiting!'));
+//            process.kill(0);
+//        }
+//    }).then(function () {
+//        console.log(chalk.green('Seed successful!'));
+//        process.kill(0);
+//    }).catch(function (err) {
+//        console.error(err);
+//        process.kill(1);
+//    });
+//});
+
+module.exports = seedProducts;
