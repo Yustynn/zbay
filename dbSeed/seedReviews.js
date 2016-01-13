@@ -1,10 +1,16 @@
-
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var chalk = require('chalk');
-var connectToDb = require('../server/db');
 var Review = Promise.promisifyAll(mongoose.model('Review'));
 
+
+/**
+ *
+ * @type {Review}
+ * if you look in db/models/review.js
+ * notice that there are required fields in Review
+ * indexConnect will append the additional data before seeding/saving to Review
+ */
 var reviews = [
   //user and product for each row
   {
@@ -47,29 +53,11 @@ var reviews = [
     text: 'couldnt stop eating.. everything was funny and amazinggggg',
     starRating: 5
   }
-
 ];
 
 var seedReviews = function (r) {
     return Review.createAsync(r);
 };
-
-//connectToDb.then(function () {
-//    Review.findAsync({}).then(function (reviews) {
-//        if (reviews.length === 0) {
-//            return seedReviews();
-//        } else {
-//            console.log(chalk.magenta('We already have seeded reviews'));
-//            process.kill(0);
-//        }
-//    }).then(function () {
-//        console.log(chalk.green('Seed successful!'));
-//        process.kill(0);
-//    }).catch(function (err) {
-//        console.error(err);
-//        process.kill(1);
-//    });
-//});
 
 module.exports = {
   data : reviews,
