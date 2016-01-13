@@ -6,10 +6,6 @@ module.exports = router;
 
 var Review = mongoose.model('Review');
 
-
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
-
 router.get('/',function(req,res,next){
 	Review.find({})
 	.then(reviews => res.json(reviews))
@@ -43,5 +39,5 @@ router.post('/:id',function(req,res,next){
 router.delete('/:id',function(req,res,next){
 	Review.findByIdAndRemove(req.params.id)
 	.then(review => res.redirect(''))
-	.then(null,next)	
+	.then(null,next)
 });

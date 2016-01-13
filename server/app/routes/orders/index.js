@@ -18,8 +18,8 @@ let isAdmin = false;
  *  TODO : Need to check that the user is the individual user with that order
  */
 router.post('/', (req, res, next) => {
-  Order.create(req.body);
-    .then( order => res.json(order))
+  Order.create(req.body)
+    .then( order => res.json(order) )
     .then( null, next );
 });
 
@@ -41,7 +41,7 @@ router.delete('/:id', (req, res, next) => {
   let id = req.params.id;
   Order.findByIdAndRemove(id)
     .then( order => res.json(order) )
-    .then( null, next) ;
+    .then( null, next);
 });
 
 /**

@@ -6,9 +6,6 @@ module.exports = router;
 
 var User = mongoose.model('User');
 
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
-
 router.get('/',function(req,res,next){
 	User.find({})
 	.then(users =>res.json(users))
@@ -43,6 +40,5 @@ router.post('/:id',function(req,res,next){
 router.delete('/:id',function(req,res,next){
 	User.findByIdAndRemove(req.params.id)
 	.then(user => res.redirect(''))
-	.then(null,next)	
+	.then(null,next)
 });
-
