@@ -4,7 +4,10 @@ var chalk = require('chalk');
 var connectToDb = require('../server/db');
 var Category = Promise.promisifyAll(mongoose.model('Category'));
 
-// this function is exported
+/**
+ * @returns {seedCategories function}
+ * used in ./index.js to seed Categories in mongo
+ */
 var seedCategories =  function() {
   var categories =   [
     {name : 'appliances'},

@@ -4,17 +4,16 @@ var chalk = require('chalk');
 var seedUsers = require('./seedUsers');
 var seedProducts = require('./seedProducts');
 var seedCategory = require('./seedCategory');
-// there are a couple more seed files to be put in
 var connectToDb = require('../server/db');
 var Product = Promise.promisifyAll(mongoose.model('Product'));
 var User = Promise.promisifyAll(mongoose.model('User'));
 var Category = Promise.promisifyAll(mongoose.model('Category'));
 
-//drop dbs in mongo shell db.runCommand({dropDatabase : 1})
 
 /**
- * TODO : randomly generate x number of categories for every product
- * TODO : add a stock
+ * First seed file to run
+ * populates users, products, categories
+ * The second file is indexConnect.js
  */
 
 connectToDb.then(function () {

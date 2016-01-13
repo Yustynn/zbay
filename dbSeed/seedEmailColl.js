@@ -1,10 +1,11 @@
-
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
-var chalk = require('chalk');
-var connectToDb = require('../server/db');
 var SentEmailCollection = Promise.promisifyAll(mongoose.model('SentEmailCollection'));
 
+/**
+ * @type {array of emailCollection data for seeding}
+ * the seed is used in indexConnect.js
+ */
 var emailCollections = [
   {
     complete: false,
@@ -73,23 +74,7 @@ var seedEmailCollections = function (collection) {
 };
 
 module.exports = {
-  data : emailCollections
+  data : emailCollections,
+  seedEmailCollections : seedEmailCollections
 }
 
-
-//connectToDb.then(function () {
-//    SentEmailCollection.findAsync({}).then(function (emailCollections) {
-//        if (emailCollections.length === 0) {
-//            return seedEmailCollections();
-//        } else {
-//            console.log(chalk.magenta('We already have seeded email collects'));
-//            process.kill(0);
-//        }
-//    }).then(function () {
-//        console.log(chalk.green('Seed successful!'));
-//        process.kill(0);
-//    }).catch(function (err) {
-//        console.error(err);
-//        process.kill(1);
-//    });
-//});
