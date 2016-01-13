@@ -27,7 +27,7 @@ router.put('/:id',function(req,res,next){
 	.then(null,next);
 });
 
-router.post('/:id',function(req,res,next){
+router.post('/',function(req,res,next){
 	User.create({
 		email: req.body.email,
 		password: req.body.password,

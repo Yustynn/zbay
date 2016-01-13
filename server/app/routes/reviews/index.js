@@ -29,7 +29,7 @@ router.put('/:id',function(req,res,next){
 });
 
 
-router.post('/:id',function(req,res,next){
+router.post('/',function(req,res,next){
 	Review.create({
 		user: req.body.user,
 		product: req.body.product,
