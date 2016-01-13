@@ -39,9 +39,7 @@ describe('Users Route', function () {
                         line1: "This is line1"
                     }
                 }).then(user => {
-                //console.log("This is the user from DB", user);
                 newUser = user;
-                //console.log("new user", newUser)
                 done();
             })
         });
@@ -65,6 +63,20 @@ describe('Users Route', function () {
                 })
         })
 
+        it('responds with nonsense', function(done) {
+            userAgent
+                .get('/api/users/fake')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .end(function(err, response) {
+                    if (err) done(err)
+                    else {
+                        console.log("fake res  body", response.body);
+                        done();
+                    }
+                })
+        })
+
         it('responds with one user', function(done) {
             userAgent
                 .get('/api/users/' + newUser._id)
@@ -73,15 +85,13 @@ describe('Users Route', function () {
                 .end(function(err, response) {
                     if (err) done(err)
                     else {
-                        //expect(response.body).to.be.an('object');
-                        //expect(response.body).to.have.length(1);
                         expect(response.body._id).to.equal(newUser._id.toString())
                         done();
                     }
                 })
         })
 
-        it('updates a user`', function(done) {
+        it('updates a user', function(done) {
             userAgent
                 .put('/api/users/' + newUser._id)
                 .send({name: 'newName'})
@@ -90,8 +100,6 @@ describe('Users Route', function () {
                 .end(function(err, response) {
                     if (err) done(err)
                     else {
-                        //expect(response.body).to.be.an('object');
-                        //expect(response.body).to.have.length(1);
                         expect(response.body._id).to.equal(newUser._id.toString());
                         expect(response.body.name).to.equal("newName");
                         done();
@@ -99,20 +107,43 @@ describe('Users Route', function () {
                 })
         })
 
-        it('updates a user`', function(done) {
+        it('creates a user', function(done) {
             userAgent
-                .put('/api/users/' + newUser._id)
-                .send({name: 'newName'})
+                .post('/api/users/')
+                .send({
+                    email: 'someEmail@gmail.com',
+                    password: 'password',
+                    name: 'Mike Jones',
+                    isAdmin: false,
+                    shipping: {
+                        line1: "My addy"
+                    }
+                })
+                .expect(201)
+                .expect('Content-Type', /json/)
+                .end(function(err, response) {
+                    if (err) done(err)
+                    else {
+                        expect(response.body.name).to.equal('Mike Jones');
+                        expect(response.body.email).to.equal('someEmail@gmail.com');
+                        done();
+                    }
+                })
+        })
+        it('deletes a user', function(done) {
+            userAgent
+                .delete('/api/users/' + newUser._id)
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .end(function(err, response) {
                     if (err) done(err)
                     else {
-                        //expect(response.body).to.be.an('object');
-                        //expect(response.body).to.have.length(1);
                         expect(response.body._id).to.equal(newUser._id.toString());
-                        expect(response.body.name).to.equal("newName");
-                        done();
+                        expect(response.body.email).to.equal(newUser.email);
+                        User.findById(newUser._id).then(found => {
+                            expect(found).to.be.null;
+                            done();
+                        })
                     }
                 })
         })
