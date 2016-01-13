@@ -24,15 +24,8 @@ router.put('/:id',function(req,res,next){
 	.then(null,next);
 });
 
-router.post('/:id',function(req,res,next){
-	User.create({
-		email: req.body.email,
-		password: req.body.password,
-		salt: req.body.salt,
-		twitter: req.body.twitter,
-		facebook: req.body.facebook,
-		google: req.body.google
-	})
+router.post('/',function(req,res,next){
+	User.create(req.body)
 	.then(user => res.json(user))
 	.then(null,next);
 });
