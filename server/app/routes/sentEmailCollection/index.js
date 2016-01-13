@@ -25,7 +25,7 @@ router.put('/:id',function(req,res,next){
 });
 
 
-router.post('/:id',function(req,res,next){
+router.post('/', function(req,res,next){
 	SentEmailCollection.create({
 		complete: req.body.complete,
 		processing: req.body.processing,
