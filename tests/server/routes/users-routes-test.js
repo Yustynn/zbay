@@ -63,20 +63,6 @@ describe('Users Route', function () {
                 })
         })
 
-        it('responds with nonsense', function(done) {
-            userAgent
-                .get('/api/users/fake')
-                .expect(200)
-                .expect('Content-Type', /json/)
-                .end(function(err, response) {
-                    if (err) done(err)
-                    else {
-                        //console.log("fake res  body", response.body);
-                        done();
-                    }
-                })
-        })
-
         it('responds with one user', function(done) {
             userAgent
                 .get('/api/users/' + newUser._id)

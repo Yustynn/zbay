@@ -4,7 +4,11 @@ module.exports = router;
 
 const mongoose = require('mongoose');
 const Category = mongoose.model('Category');
-let isAdmin = false;
+
+var mustBeAdmin = function(req, res, next) {
+  if (req.user && req.user.isAdmin) next();
+  else res.status(401).end();
+}
 
 /**
  *  Admin  has access to all CRUD operations
@@ -12,10 +16,9 @@ let isAdmin = false;
  *
  */
 
-router.post('/', (req, res, next) => {
-  if (!isAdmin) return res.send(401).end();
+router.post('/', mustBeAdmin, (req, res, next) => {
   Category.create(req.body)
-    .then( category => res.json(category) )
+    .then( category => res.status(201).json(category) )
     .then( null, next );
 });
 
@@ -27,15 +30,13 @@ router.get('/', (req, res, next) => {
 
 });
 
-router.put('/:id', (req, res, next) => {
-  if (!isAdmin) return res.send(401).end();
+router.put('/:id', mustBeAdmin, (req, res, next) => {
   Category.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    .then( category => res.json(category) )
+    .then( category => res.status(200).json(category) )
     .then( null, next );
 });
 
-router.delete('/:id', (req, res, next) => {
-  if (!isAdmin) return res.send(401).end();
+router.delete('/:id', mustBeAdmin, (req, res, next) => {
   Category.findByIdAndRemove(req.params.id)
     .then( category => res.json(category) )
     .then( null, next );

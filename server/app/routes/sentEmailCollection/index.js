@@ -27,11 +27,9 @@ router.put('/:id',function(req,res,next){
 	.then(null,next);
 });
 
-
-router.post('/',function(req,res,next){
-	SentEmailCollection.create(req.body)
-	.then(emailCollection => res.status(201).json(emailCollection))
-	.then(null,next)
+router.post('/',function(req,res,next) {
+    SentEmailCollection.create(req.body)
+        .then(emailCollection => res.status(201).json(emailCollection))
 });
 
 router.delete('/:id',function(req,res,next){
