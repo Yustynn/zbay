@@ -1,9 +1,9 @@
 'use strict';
-let router = require('express').Router();
+const router = require('express').Router();
 module.exports = router;
-let _ = require('lodash');
-let mongoose = require('mongoose');
-let Category = mongoose.model('Category');
+
+const mongoose = require('mongoose');
+const Category = mongoose.model('Category');
 let isAdmin = false;
 
 /**
@@ -14,31 +14,29 @@ let isAdmin = false;
 
 router.post('/', (req, res, next) => {
   if (!isAdmin) return res.send(401).end();
-  Category.create(req.body).exec()
-    .then( category => res.json(category))
+  Category.create(req.body)
+    .then( category => res.json(category) )
     .then( null, next );
 });
 
 // all users can read categories
 router.get('/', (req, res, next) => {
-  Category.find({}).exec()
-    .then( categories => res.json(categories))
+  Category.find()
+    .then( categories => res.json(categories) )
     .then( null, next );
 
 });
 
-// again, is there a need to update a category?
-// you just add a category and delete a category
-router.put('/', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   if (!isAdmin) return res.send(401).end();
-  Category.findOneAndUpdate(req.body).exec()
-    .then( category => res.json(category))
-    .then( null, next);
+  Category.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then( category => res.json(category) )
+    .then( null, next );
 });
 
-router.delete('/', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   if (!isAdmin) return res.send(401).end();
-  Category.remove(req.body).exec()
-    .then( category => res.json(category))
-    .then( null, next);
+  Category.findByIdAndRemove(req.params.id)
+    .then( category => res.json(category) )
+    .then( null, next );
 });

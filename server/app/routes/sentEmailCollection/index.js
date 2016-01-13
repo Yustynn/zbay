@@ -6,10 +6,6 @@ module.exports = router;
 
 var SentEmailCollection = mongoose.model('SentEmailCollection')
 
-
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
-
 router.get('/',function(req,res,next){
 	SentEmailCollection.find({})
 	.then(emailCollections => res.json(emailCollection))
@@ -42,6 +38,6 @@ router.post('/:id',function(req,res,next){
 
 router.delete('/:id',function(req,res,next){
 	SentEmailCollection.findByIdAndRemove(req.params.id)
-	.then(emailCollection => res.redirect(''))
-	.then(null,next)	
+	.then(() => res.redirect(''))
+	.then(null,next)
 });
