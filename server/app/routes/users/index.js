@@ -33,10 +33,10 @@ router.put('/:id',function(req,res,next){
 	.then(null,next);
 });
 
-router.post('/',function(req,res,next){
-	User.create(req.body)
-	.then(user => res.status(201).send(user))
-	.then(null,next);
+router.post('/',function(req,res,next) {
+    User.create(req.body)
+        .then(user => res.status(201).send(user))
+        .then(null, next);
 });
 
 router.delete('/:id',function(req,res,next){
