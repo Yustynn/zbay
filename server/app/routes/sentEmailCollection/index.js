@@ -7,14 +7,17 @@ module.exports = router;
 var SentEmailCollection = mongoose.model('SentEmailCollection')
 
 router.get('/',function(req,res,next){
-	SentEmailCollection.find({})
-	.then(emailCollections => res.json(emailCollection))
+	SentEmailCollection.find()
+	.then(emailCollection => res.json(emailCollection))
 	.then(null,next);
 });
 
 router.get('/:id',function(req,res,next){
-	SentEmailCollectionById.find(req.params.id)
-	.then(emailCollection => res.json(emailCollection))
+    console.log("Hit the getOne email route", req.params);
+	SentEmailCollection.findById(req.params.id)
+	.then(emailCollection => {
+            res.json(emailCollection)
+        })
 	.then(null,next);
 });
 
@@ -24,20 +27,13 @@ router.put('/:id',function(req,res,next){
 	.then(null,next);
 });
 
-
-router.post('/', function(req,res,next){
-	SentEmailCollection.create({
-		complete: req.body.complete,
-		processing: req.body.processing,
-		shipped: req.body.shipped,
-		delivered: req.body.delivered
-	})
-	.then(emailCollection => res.json(emailCollection))
-	.then(null,next)
+router.post('/',function(req,res,next) {
+    SentEmailCollection.create(req.body)
+        .then(emailCollection => res.status(201).json(emailCollection))
 });
 
 router.delete('/:id',function(req,res,next){
 	SentEmailCollection.findByIdAndRemove(req.params.id)
-	.then(() => res.redirect(''))
+	.then(emailCollection => res.json(emailCollection))
 	.then(null,next)
 });
