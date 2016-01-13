@@ -71,7 +71,7 @@ describe('Users Route', function () {
                 .end(function(err, response) {
                     if (err) done(err)
                     else {
-                        console.log("fake res  body", response.body);
+                        //console.log("fake res  body", response.body);
                         done();
                     }
                 })
@@ -130,6 +130,7 @@ describe('Users Route', function () {
                     }
                 })
         })
+
         it('deletes a user', function(done) {
             userAgent
                 .delete('/api/users/' + newUser._id)

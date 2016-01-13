@@ -15,7 +15,7 @@ router.get('/',function(req,res,next){
 router.get('/fake',function(req,res,next){
 	User.findById('5696b17ec000895d08f9a8a9')
 	.then(users =>{
-            console.log("THis is the failed search", users);
+            //console.log("THis is the failed search", users);
             res.json(users)
         })
 	.then(null,next);
