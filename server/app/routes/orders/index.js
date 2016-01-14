@@ -3,8 +3,13 @@ const router = require('express').Router();
 module.exports = router;
 
 import { mustBeAdmin, mustBeLoggedIn } from '../../../helpers/routesPermissions'
-import { createDoc, getDocAndSendIfOwnerOrAdmin, getDocAndUpdateIfOwnerOrAdmin, getAllDocsAndSend }
-from '../../../helpers/routesCrud';
+import {
+  createDoc,
+  getAllDocsAndSend,
+  getDocAndSendIfOwnerOrAdmin,
+  getDocAndUpdateIfOwnerOrAdmin,
+  getDocAndDeleteIfOwnerOrAdmin
+} from '../../../helpers/routesCrud';
 
 /**
  * CRUD operations
