@@ -1,15 +1,12 @@
 /**
- * Middleware-returning Functions:
+ * MIDDLEWARE-RETURNING FUNCTIONS:
+ * createDoc(ModelStr, tieToUser = false)
+ * getDocAndUpdate(ModelStr)
+ * getDocAndDelete(ModelStr)
  *
  * getDocAndSendIfOwnerOrAdmin(ModelStr)
  * getDocAndDeleteIfOwnerOrAdmin(ModelStr)
  * getDocAndUpdateIfOwnerOrAdmin(ModelStr)
- *
- * getDocAndUpdate(ModelStr)
- * getDocAndDelete(ModelStr)
- * getDocAndSendIfOwnerOrAdmin(ModelStr)
- * getDocAndSendIfOwnerOrAdmin(ModelStr)
- * getDocAndSendIfOwnerOrAdmin(ModelStr)
 */
 
 const mongoose = require('mongoose')

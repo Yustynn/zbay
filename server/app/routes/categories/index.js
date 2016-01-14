@@ -2,15 +2,10 @@
 const router = require('express').Router();
 module.exports = router;
 
-const mongoose = require('mongoose');
-
-var mustBeAdmin = function(req, res, next) {
-  if (req.user && req.user.isAdmin) next();
-  else res.status(401).end();
-}
+import { mustBeAdmin } from '../../../helpers/routesPermissions'
 
 import { getDocAndDelete, getDocAndUpdate, getAllDocsAndSend, createDoc }
-from '../../helpers/routesHelper';
+from '../../../helpers/routesCrud';
 
 /**
  *  Admin  has access to all CRUD operations
@@ -18,8 +13,6 @@ from '../../helpers/routesHelper';
  *
  */
 
-
-// All users can read categories
 router.get('/', getAllDocsAndSend('Category'));
 
 router.post('/', mustBeAdmin, createDoc('Category'));
