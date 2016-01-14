@@ -2,13 +2,10 @@
 const router = require('express').Router();
 module.exports = router;
 
-const mongoose = require('mongoose');
-const Category = mongoose.model('Category');
+import { mustBeAdmin } from '../../../helpers/routesPermissions'
 
-var mustBeAdmin = function(req, res, next) {
-  if (req.user && req.user.isAdmin) next();
-  else res.status(401).end();
-}
+import { getDocAndDelete, getDocAndUpdate, getAllDocsAndSend, createDoc }
+from '../../../helpers/routesCrud';
 
 /**
  *  Admin  has access to all CRUD operations
@@ -16,28 +13,10 @@ var mustBeAdmin = function(req, res, next) {
  *
  */
 
-router.post('/', mustBeAdmin, (req, res, next) => {
-  Category.create(req.body)
-    .then( category => res.status(201).json(category) )
-    .then( null, next );
-});
+router.get('/', getAllDocsAndSend('Category'));
 
-// all users can read categories
-router.get('/', (req, res, next) => {
-  Category.find()
-    .then( categories => res.json(categories) )
-    .then( null, next );
+router.post('/', mustBeAdmin, createDoc('Category'));
 
-});
+router.put('/:id', mustBeAdmin, getDocAndUpdate('Category'));
 
-router.put('/:id', mustBeAdmin, (req, res, next) => {
-  Category.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    .then( category => res.status(200).json(category) )
-    .then( null, next );
-});
-
-router.delete('/:id', mustBeAdmin, (req, res, next) => {
-  Category.findByIdAndRemove(req.params.id)
-    .then( category => res.json(category) )
-    .then( null, next );
-});
+router.delete('/:id', mustBeAdmin, getDocAndDelete('Category'));
