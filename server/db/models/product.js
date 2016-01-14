@@ -15,14 +15,10 @@ const schema = new mongoose.Schema({
   },
   photoUrls: [String],
   defaultPhotoUrl: String,
-  reviews: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Review'
-  }],
-  stock: [{
+  stock: {
     type: Number,
     default: 0
-  }]
+  }
 });
 
 // Sets default photo to first photo when no default photo is specified

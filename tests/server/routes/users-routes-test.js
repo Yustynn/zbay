@@ -135,6 +135,4 @@ describe('Users Route', function () {
                 })
         })
     })
-
-
 });
