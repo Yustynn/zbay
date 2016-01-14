@@ -10,6 +10,9 @@ var mustBeAdmin = function(req, res, next) {
   else res.status(401).end();
 }
 
+import { getDocAndDelete, getDocAndUpdate }
+from '../../helpers/routesHelper';
+
 /**
  *  Admin  has access to all CRUD operations
  *  all users, including unregistered users can read categories
@@ -18,26 +21,18 @@ var mustBeAdmin = function(req, res, next) {
 
 router.post('/', mustBeAdmin, (req, res, next) => {
   Category.create(req.body)
-    .then( category => res.status(201).json(category) )
-    .then( null, next );
+    .then(category => res.status(201).json(category))
+    .then(null, next);
 });
 
 // all users can read categories
 router.get('/', (req, res, next) => {
   Category.find()
-    .then( categories => res.json(categories) )
-    .then( null, next );
+    .then(categories => res.json(categories))
+    .then(null, next);
 
 });
 
-router.put('/:id', mustBeAdmin, (req, res, next) => {
-  Category.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    .then( category => res.status(200).json(category) )
-    .then( null, next );
-});
+router.put('/:id', mustBeAdmin, getDocAndUpdate('Category'));
 
-router.delete('/:id', mustBeAdmin, (req, res, next) => {
-  Category.findByIdAndRemove(req.params.id)
-    .then( category => res.json(category) )
-    .then( null, next );
-});
+router.delete('/:id', mustBeAdmin, getDocAndDelete('Category'));
