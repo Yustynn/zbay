@@ -3,14 +3,13 @@ const router = require('express').Router();
 module.exports = router;
 
 const mongoose = require('mongoose');
-const Category = mongoose.model('Category');
 
 var mustBeAdmin = function(req, res, next) {
   if (req.user && req.user.isAdmin) next();
   else res.status(401).end();
 }
 
-import { getDocAndDelete, getDocAndUpdate }
+import { getDocAndDelete, getDocAndUpdate, getAllDocsAndSend, createDoc }
 from '../../helpers/routesHelper';
 
 /**
@@ -19,19 +18,11 @@ from '../../helpers/routesHelper';
  *
  */
 
-router.post('/', mustBeAdmin, (req, res, next) => {
-  Category.create(req.body)
-    .then(category => res.status(201).json(category))
-    .then(null, next);
-});
 
-// all users can read categories
-router.get('/', (req, res, next) => {
-  Category.find()
-    .then(categories => res.json(categories))
-    .then(null, next);
+// All users can read categories
+router.get('/', getAllDocsAndSend('Category'));
 
-});
+router.post('/', mustBeAdmin, createDoc('Category'));
 
 router.put('/:id', mustBeAdmin, getDocAndUpdate('Category'));
 

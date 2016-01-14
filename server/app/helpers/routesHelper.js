@@ -1,3 +1,17 @@
+/**
+ * Middleware-returning Functions:
+ *
+ * getDocAndSendIfOwnerOrAdmin(ModelStr)
+ * getDocAndDeleteIfOwnerOrAdmin(ModelStr)
+ * getDocAndUpdateIfOwnerOrAdmin(ModelStr)
+ *
+ * getDocAndUpdate(ModelStr)
+ * getDocAndDelete(ModelStr)
+ * getDocAndSendIfOwnerOrAdmin(ModelStr)
+ * getDocAndSendIfOwnerOrAdmin(ModelStr)
+ * getDocAndSendIfOwnerOrAdmin(ModelStr)
+*/
+
 const mongoose = require('mongoose')
 
 export const ownerOrAdmin = (doc, user) => {
@@ -59,6 +73,18 @@ export const getDocAndUpdateIfOwnerOrAdmin = ModelStr => (req, res, next) => {
 };
 
 
+
+// returns middleware. No auth.
+export const getAllDocsAndSend = ModelStr => (req, res, next) => {
+  const id = req.params.id;
+  const Model = mongoose.model(ModelStr);
+
+  Model.find()
+    .then(documents => res.json(documents))
+    .then(null, next);
+}
+
+// returns middleware. No auth.
 export const getDocAndUpdate = ModelStr => (req, res, next) => {
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
@@ -70,15 +96,24 @@ export const getDocAndUpdate = ModelStr => (req, res, next) => {
     .then(null, next);
 }
 
-
+// returns middleware. No auth.
 export const getDocAndDelete = ModelStr => (req, res, next) => {
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
   Model.findByIdAndRemove(req.params.id)
-    .then(category => {
-      if (!category) res.status(404).send();
-      else return res.json(category)
+    .then(document => {
+      if (!document) res.status(404).send();
+      else return res.json(document)
     })
+    .then(null, next);
+}
+
+export const createDoc = (ModelStr, tieToUser = false) => (req, res, next) => {
+  const Model = mongoose.model(ModelStr);
+  if (tieToUser) req.body.user = req.user._id;
+
+  Model.create(req.body)
+    .then(document => res.status(201).json(document))
     .then(null, next);
 }
