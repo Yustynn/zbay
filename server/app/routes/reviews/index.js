@@ -26,18 +26,13 @@ router.put('/:id',function(req,res,next){
 
 
 router.post('/',function(req,res,next){
-	Review.create({
-		user: req.body.user,
-		product: req.body.product,
-		text: req.body.text,
-		starRating: req.body.starRating
-	})
+	Review.create(req.body)
 	.then(review => res.json(review))
 	.then(null,next)
 });
 
 router.delete('/:id',function(req,res,next){
 	Review.findByIdAndRemove(req.params.id)
-	.then(review => res.redirect(''))
+	.then(review => res.send(201))
 	.then(null,next)
 });

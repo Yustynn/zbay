@@ -7,11 +7,10 @@ const schema = new mongoose.Schema({
     ref : 'User',
     required : true
   },
-  orderItem : [{
+  orderItems : [{
     type : mongoose.Schema.Types.ObjectId,
     ref : 'OrderItem',
     required : true
-
   }],
   datetime : {
     type : Date,
@@ -19,12 +18,20 @@ const schema = new mongoose.Schema({
   },
   status : {
     type : String,
-    enum : ['processed', 'shipped', 'delivered'],
-    default : 'processed'
+    enum : [ 'inCart', 'processing', 'shipped', 'delivered'],
+    default : 'inCart'
   },
-  sentEmails : {
-    type : mongoose.Schema.Types.ObjectId,
-    ref : 'SentEmailCollection'
+  emailStatus : {
+    type: String,
+    enum: ['processing', 'shipped', 'delivered'],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  },
+  address : {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Address'
   }
 });
 

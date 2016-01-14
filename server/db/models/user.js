@@ -43,21 +43,14 @@ var schema = new mongoose.Schema({
     google: {
         id: String
     },
-    shipping : {
-        line1 : String,
-        line2 : String,
-        zip : String,
-        city : String,
-        state : String
-    },
-    cart : [{
+    address: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'OrderItem'
+        ref: 'Address'
     }]
 });
 
 // method to remove sensitive information from user objects before sending them out
-schema.methods.sanitize =  function () {
+schema.methods.sanitize = function () {
     return _.omit(this.toJSON(), ['password', 'salt']);
 };
 
