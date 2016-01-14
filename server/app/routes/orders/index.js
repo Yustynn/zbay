@@ -20,7 +20,7 @@ import {
 
 router.post('/', mustBeLoggedIn, createDoc('Order', true));
 
-router.get('/', mustBeAdmin, getAllDocsAndSend);
+router.get('/', mustBeAdmin, getAllDocsAndSend('Order'));
 
 router.get('/:id', mustBeLoggedIn, getDocAndSendIfOwnerOrAdmin('Order'));
 
