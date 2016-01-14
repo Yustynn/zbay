@@ -1,6 +1,8 @@
 /**
  * MIDDLEWARE-RETURNING FUNCTIONS:
  * createDoc(ModelStr, tieToUser = false)
+ * getAllDocsAndSend(ModelStr)
+ * getDocAndSend(ModelStr)
  * getDocAndUpdate(ModelStr)
  * getDocAndDelete(ModelStr)
  *
@@ -73,11 +75,19 @@ export const getDocAndUpdateIfOwnerOrAdmin = ModelStr => (req, res, next) => {
 
 // returns middleware. No auth.
 export const getAllDocsAndSend = ModelStr => (req, res, next) => {
-  const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
   Model.find()
     .then(documents => res.json(documents))
+    .then(null, next);
+}
+// returns middleware. No auth.
+export const getDocAndSend = ModelStr => (req, res, next) => {
+  const id = req.params.id;
+  const Model = mongoose.model(ModelStr);
+
+  Model.findById(id)
+    .then(document => res.status(200).json(document))
     .then(null, next);
 }
 
@@ -86,10 +96,10 @@ export const getDocAndUpdate = ModelStr => (req, res, next) => {
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
-  Model.findByIdAndUpdate(req.params.id, req.body, {
+  Model.findByIdAndUpdate(id, req.body, {
       new: true
     })
-    .then(category => res.status(200).json(category))
+    .then(document => res.status(200).json(document))
     .then(null, next);
 }
 
