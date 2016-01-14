@@ -33,6 +33,6 @@ router.post('/',function(req,res,next){
 
 router.delete('/:id',function(req,res,next){
 	Review.findByIdAndRemove(req.params.id)
-	.then(review => res.redirect(''))
+	.then(review => res.send(201))
 	.then(null,next)
 });
