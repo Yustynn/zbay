@@ -18,9 +18,9 @@ router.get('/', getAllDocsAndSend('Review'))
 
 router.get('/id', getDocAndSend('Review'))
 
-router.put('/id', getDocAndUpdateIfOwnerOrAdmin('Review'))
+router.put('/id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('Review'))
 
-router.delete('/id', getDocAndDeleteIfOwnerOrAdmin('Review'))
+router.delete('/id', mustBeLoggedIn, getDocAndDeleteIfOwnerOrAdmin('Review'))
 
 
 /**
