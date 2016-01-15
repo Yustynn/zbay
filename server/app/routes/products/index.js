@@ -4,7 +4,7 @@ module.exports = router;
 
 import { mustBeAdmin } from '../../../helpers/routesPermissions'
 
-import { getDocAndDelete, getDocAndUpdate, getAllDocsAndSend, createDoc }
+import { getDocAndDelete, getDocAndUpdate, getDocsAndSend, createDoc }
 from '../../../helpers/routesCrud';
 
 /**
@@ -13,9 +13,9 @@ from '../../../helpers/routesCrud';
  *
  */
 
-router.get('/', getAllDocsAndSend('Product'));
+router.get('/', getDocsAndSend('Product'));
 
-router.get('/:id', getAllDocsAndSend('Product'));
+router.get('/:id', getDocsAndSend('Product'));
 
 router.post('/', mustBeAdmin, createDoc('Product'));
 
