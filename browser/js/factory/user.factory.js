@@ -1,37 +1,34 @@
-/**
- *  Get all categories and add a category
- *  Using $http instead of $http.get, $http.post for explicitness, aesthetics
- */
-app.factory('CategoryFactory', (HelperFactory) => {
+app.factory('UserFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/categories/';
+  const url = '/api/user/';
 
-  factory.addCategory = (category) => {
+  factory.createUser = (payload) => {
     const obj = {
       url : url,
       method : 'POST',
-      data : { name : category }
+      data : payload
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.getCategory = () => {
+  factory.getUser = (id) => {
     const obj = {
-      url : url,
-      method : 'GET'
+      url : url + id ? id : '',
+      method : 'GET',
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.updateCategory = (id) => {
+  factory.updateUser = (id, payload) => {
     const obj = {
       url : url + id,
-      method : 'PUT'
+      method : 'PUT',
+      data : payload
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.deleteCategory = (id) => {
+  factory.deleteUser = (id) => {
     const obj = {
       url : url + id,
       method : 'DELETE'

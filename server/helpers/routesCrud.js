@@ -83,6 +83,7 @@ export const getAllDocsAndSend = ModelStr => (req, res, next) => {
 }
 // returns middleware. No auth.
 export const getDocAndSend = ModelStr => (req, res, next) => {
+  console.log("here I am");
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
