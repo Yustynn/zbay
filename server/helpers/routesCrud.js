@@ -74,12 +74,27 @@ export const getDocAndUpdateIfOwnerOrAdmin = ModelStr => (req, res, next) => {
 
 
 // returns middleware. No auth.
-export const getAllDocsAndSend = ModelStr => (req, res, next) => {
-  const Model = mongoose.model(ModelStr);
+export const getAllDocsAndSend = (ModelStr1, ModelStr2) => (req, res, next) => {
+  if(!ModelStr2)
+  {
+    const Model = mongoose.model(ModelStr1);
 
-  Model.find()
-    .then(documents => res.json(documents))
-    .then(null, next);
+    Model.find()
+      .then(documents => res.json(documents))
+      .then(null, next);
+  }
+  else
+  {
+    const Model1 = mongoose.model(ModelStr1);
+    const id = req.params.id;
+    var obj = {};
+    var schemaRef = ModelStr2.toLowerCase();
+    obj[schemaRef] = id;
+    Model1.find(obj)
+      .then(documents => res.json(documents))
+      .then(null,next);
+  }
+  
 }
 // returns middleware. No auth.
 export const getDocAndSend = ModelStr => (req, res, next) => {

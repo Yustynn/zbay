@@ -16,6 +16,8 @@ router.post('/', mustBeLoggedIn, createDoc('Review', true))
 
 router.get('/', getAllDocsAndSend('Review'))
 
+router.get('/byProduct/:id', getAllDocsAndSend('Review','product'))
+
 router.get('/:id', getDocAndSend('Review'))
 
 router.put('/:id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('Review'))
