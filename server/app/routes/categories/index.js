@@ -3,10 +3,10 @@ const router = require('express').Router();
 module.exports = router;
 
 import { mustBeAdmin } from '../../../helpers/routesPermissions'
-import { getDocAndDelete, getDocAndUpdate, getAllDocsAndSend, createDoc }
+import { getDocAndDelete, getDocAndUpdate, getDocsAndSend, createDoc }
 from '../../../helpers/routesCrud';
 
-router.get('/', getAllDocsAndSend('Category'));
+router.get('/', getDocsAndSend('Category'));
 
 router.post('/', mustBeAdmin, createDoc('Category'));
 
