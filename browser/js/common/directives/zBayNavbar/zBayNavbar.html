@@ -1,0 +1,36 @@
+<!--http://jsfiddle.net/iscrow/Es4L3/-->
+<div class="zbay-navbar">
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--<a class="navbar-brand" href="#">Brand</a>-->
+            <div class="navbar-brand navbar-header">
+                <a ui-sref="home">
+                    <fullstack-logo></fullstack-logo>
+                </a>
+            </div>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" collapse="navCollapsed">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+                </li>
+            </ul>
+            <button ng-show="!user" ui-sref="login" class="btn login-button sign-in">Login</button>
+            <div ng-show="user" class="welcome">
+                <span>Welcome, {{ user.email }}!</span>
+                <a ng-click="logout()">Logout</a>
+            </div>
+            <searchbar></searchbar>
+            <categorydropdown></categorydropdown>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+</div>
