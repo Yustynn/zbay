@@ -8,8 +8,6 @@ from '../../../helpers/routesCrud';
 
 router.get('/', getAllDocsAndSend('Category'));
 
-router.get('/:id', getAllDocsAndSend('Category'));
-
 router.post('/', mustBeAdmin, createDoc('Category'));
 
 router.put('/:id', mustBeAdmin, getDocAndUpdate('Category'));

@@ -15,6 +15,8 @@ from '../../../helpers/routesCrud';
 
 router.get('/', getAllDocsAndSend('Product'));
 
+router.get('/:id', getAllDocsAndSend('Product'));
+
 router.post('/', mustBeAdmin, createDoc('Product'));
 
 router.put('/:id', mustBeAdmin, getDocAndUpdate('Product'));
