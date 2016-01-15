@@ -1,6 +1,6 @@
 app.factory('OrderFactory', (HelperFactory) => {
   const factory = {};
-  const url : '/api/order/';
+  const url = '/api/order/';
 
   factory.createOrder = (payload) => {
     const obj = {
@@ -15,7 +15,7 @@ app.factory('OrderFactory', (HelperFactory) => {
     const obj = {
       url : url,
       method : 'GET',
-      params : { id : id }
+      params : id ? { id : id } : {}
     };
     return HelperFactory.httpResponse(obj);
   };
