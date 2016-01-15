@@ -13,18 +13,16 @@ app.factory('UserFactory', (HelperFactory) => {
 
   factory.getUser = (id) => {
     const obj = {
-      url : url,
+      url : url + id ? id : '',
       method : 'GET',
-      params : id ? { id : id } : {}
     };
     return HelperFactory.httpResponse(obj);
   };
 
   factory.updateUser = (id, payload) => {
     const obj = {
-      url : url,
+      url : url + id,
       method : 'PUT',
-      params : { id : id },
       data : payload
     };
     return HelperFactory.httpResponse(obj);
@@ -32,9 +30,8 @@ app.factory('UserFactory', (HelperFactory) => {
 
   factory.deleteUser = (id) => {
     const obj = {
-      url : url,
-      method : 'DELETE',
-      params : { id : id }
+      url : url + id,
+      method : 'DELETE'
     };
     return HelperFactory.httpResponse(obj);
   };

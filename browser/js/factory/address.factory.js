@@ -4,18 +4,16 @@ app.factory('AddressFactory', (HelperFactory) => {
   // need to check that params works this way
   factory.getAddress = (id) => {
     const obj = {
-      url : url,
+      url : url + id ? id : '',
       method : 'GET',
-      params : id ? { id : id } : {}
     };
     return HelperFactory.httpResponse(obj);
   };
 
   factory.updateAddress = (id, payload) => {
     const obj = {
-      url : url,
+      url : url + id,
       method : 'PUT',
-      params : { id : id },
       data : payload
     }
     return HelperFactory.httpResponse(obj);
@@ -23,9 +21,8 @@ app.factory('AddressFactory', (HelperFactory) => {
 
   factory.deleteAddress = (id) => {
     const obj = {
-      url : url,
+      url : url + id,
       method : 'DELETE',
-      params : { id : id }
     };
     return HelperFactory.httpResponse(obj);
   };

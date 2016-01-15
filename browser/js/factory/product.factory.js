@@ -13,18 +13,16 @@ app.factory('ProductFactory', (HelperFactory) => {
 
   factory.getProduct = (id) => {
     const obj = {
-      url : url,
-      method : 'GET',
-      params : id ? { id : id } : {}
+      url : url + id,
+      method : 'GET'
     };
     return HelperFactory.httpResponse(obj);
   };
 
   factory.updateProduct = (id, payload) => {
     const obj = {
-      url : url,
+      url : url + id,
       method : 'PUT',
-      params : { id : id },
       data : payload
     };
     return HelperFactory.httpResponse(obj);
@@ -32,9 +30,8 @@ app.factory('ProductFactory', (HelperFactory) => {
 
   factory.deleteProduct = (id) => {
     const obj = {
-      url : url,
-      method : 'DELETE',
-      params : { id : id }
+      url : url + id,
+      method : 'DELETE'
     };
     return HelperFactory.httpResponse(obj);
   };

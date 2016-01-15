@@ -4,10 +4,11 @@
  */
 app.factory('CategoryFactory', (HelperFactory) => {
   const factory = {};
+  const url = '/api/categories/';
 
   factory.addCategory = (category) => {
     const obj = {
-      url : '/api/categories/',
+      url : url,
       method : 'POST',
       data : { name : category }
     };
@@ -16,7 +17,7 @@ app.factory('CategoryFactory', (HelperFactory) => {
 
   factory.getCategory = () => {
     const obj = {
-      url : 'api/categories/',
+      url : url,
       method : 'GET'
     };
     return HelperFactory.httpResponse(obj);
@@ -24,18 +25,16 @@ app.factory('CategoryFactory', (HelperFactory) => {
 
   factory.updateCategory = (id) => {
     const obj = {
-      url : 'api/categories/',
-      method : 'PUT',
-      params : { id : id } // need to verify this
+      url : url + id,
+      method : 'PUT'
     };
     return HelperFactory.httpResponse(obj);
   };
 
   factory.deleteCategory = (id) => {
     const obj = {
-      url : 'api/categories/',
-      method : 'DELETE',
-      params : { id : id } // need to verify this
+      url : url + id,
+      method : 'DELETE'
     };
     return HelperFactory.httpResponse(obj);
   };
