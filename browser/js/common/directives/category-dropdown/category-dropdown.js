@@ -3,7 +3,6 @@
 app.directive('categorydropdown', (CategoryFactory) => {
   return {
     restrict : 'E',
-    replace : true,
     templateUrl : 'js/common/directives/category-dropdown/category-dropdown.html',
     link : (scope) => {
       // Get all categories
