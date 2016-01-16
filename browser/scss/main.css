@@ -81,6 +81,9 @@ navbar {
 .zbay-navbar .sign-in {
   margin-top: 10px; }
 
+.dropdown {
+  width: 20%; }
+
 #home fullstack-logo {
   padding-top: 30px;
   width: 150px;
