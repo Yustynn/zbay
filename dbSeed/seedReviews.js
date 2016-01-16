@@ -1,4 +1,4 @@
-Cvar mongoose = require('mongoose');
+var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var chalk = require('chalk');
 var Review = Promise.promisifyAll(mongoose.model('Review'));

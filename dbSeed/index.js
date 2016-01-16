@@ -4,10 +4,12 @@ var chalk = require('chalk');
 var seedUsers = require('./seedUsers');
 var seedProducts = require('./seedProducts');
 var seedCategory = require('./seedCategory');
+var seedAddress = require('./seedAddress');
 var connectToDb = require('../server/db');
 var Product = Promise.promisifyAll(mongoose.model('Product'));
 var User = Promise.promisifyAll(mongoose.model('User'));
 var Category = Promise.promisifyAll(mongoose.model('Category'));
+var Address = Promise.promisifyAll(mongoose.model('Address'));
 
 
 /**
@@ -22,7 +24,8 @@ connectToDb.then(function () {
     var users = seedUsers();
     var products = seedProducts();
     var categories = seedCategory();
-    return Promise.all([users, products, categories])
+    var addresses = seedAddress();
+    return Promise.all([users, products, categories, addresses])
       .then(function(results) {
         return results;
       })

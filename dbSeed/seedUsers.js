@@ -4,6 +4,11 @@ var chalk = require('chalk');
 var connectToDb = require('../server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
 
+/**
+ * users can also have array of orders, reviews, address,
+ * and products -- all are optional
+ * @returns {*}
+ */
 var seedUsers = function () {
 
     var users = [
