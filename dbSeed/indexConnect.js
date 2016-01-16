@@ -10,14 +10,13 @@ var Category = Promise.promisifyAll(mongoose.model('Category'));
 var Review = Promise.promisifyAll(mongoose.model('Review'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
 var OrderItem = Promise.promisifyAll(mongoose.model('OrderItem'));
-var SentEmailCollection = Promise.promisifyAll(mongoose.model('SentEmailCollection'));
+var Address = Promise.promisifyAll(mongoose.model('Address'));
 
 /**
  * exported an array of seed data that was added with additional data
  * before it was then pushed into the collections
  */
 var reviewData = require('./seedReviews').data;
-var emailCollectionData = require('./seedEmailColl').data;
 
 /**
  * Helper function
@@ -62,6 +61,7 @@ var generateArrayOfValues = function (arr) {
 var products;
 var categories;
 var users;
+var addresses;
 
 connectToDb
   .then(function(){
@@ -83,6 +83,16 @@ connectToDb
     users = allUsers;
   })
   .then(function() {
+    return Address.findAsync({});
+  })
+  .then(function(alladdresses) {
+    addresses = alladdresses;
+  })
+  .then(function () {
+    // attaching addresses to users
+
+  })
+  .then(function() {
     // attaching product and user to a review and populate the Review
     // reviewData is included at top of the file
     reviewData.forEach(function(review) {
@@ -90,33 +100,6 @@ connectToDb
       review.user = getRandomFromArray(users)._id;
     });
     return Review.createAsync(reviewData);
-  })
-  .then(function() {
-    // emailCollectionData is included at the top of the file
-    emailCollectionData.forEach(function(email) {
-      email.user = getRandomFromArray(products)._id;
-    });
-    return SentEmailCollection.createAsync(emailCollectionData);
-  })
-  .then(function(sentEmailCollection) {
-    // from the generated sentEmailCollection
-    // created the orderItem and order
-    // save to OrderItem and Order respectively
-    sentEmailCollection.forEach(function(email) {
-      var orderItem = new OrderItem({
-        product : getRandomFromArray(products)._id,
-        quantity : generateRandomNumber(100)
-      });
-
-      var order = new Order({
-        user : email.user,
-        orderItem : [orderItem],
-        sentEmails : email
-      });
-
-      orderItem.save();
-      order.save();
-    });
   })
   .then(function() {
     // attaching categories and stock numbers with a product
@@ -127,10 +110,23 @@ connectToDb
       return product.save();
     }));
   })
-  .then(function(products) {
-    Promise.all(products).then(function(product){
-      console.log(product);
-    })
+  .then(function () {
+    for (var i = 0; i < 5; i++) {
+      var items = [];
+      for (var j = 0; j < 5; j++) {
+        var orderItem = new OrderItem({
+          product : getRandomFromArray(products),
+          quantity :generateRandomNumber(50)
+        });
+        items.push(orderItem);
+      }
+
+      var order = new Order({
+        user : getRandomFromArray(users),
+        orderItems : items
+      });
+      order.save();
+    }
   })
   .then(function () {
     console.log(chalk.green('Seed successful!'));
@@ -140,3 +136,8 @@ connectToDb
     process.kill(1);
   });
 
+//.then(function(products) {
+//  Promise.all(products).then(function(product){
+//    console.log(product);
+//  })
+//})
