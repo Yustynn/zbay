@@ -1,4 +1,4 @@
-app.directive('zbaynavbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('zbayNavbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
 
   return {
     restrict: 'E',
