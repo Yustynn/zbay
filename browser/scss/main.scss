@@ -4,6 +4,7 @@
 
 body {
   background: #fdfdfd;
+  margin-bottom: 100px; // Used to clear the footer, may be a better way
 }
 
 @mixin clearfix {

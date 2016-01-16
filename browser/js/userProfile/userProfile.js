@@ -11,5 +11,5 @@ app.config($stateProvider => {
 });
 
 app.controller('ProfileCtrl', $scope => {
-
+    $scope.showShipping = false;
 });

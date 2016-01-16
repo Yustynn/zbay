@@ -1,4 +1,6 @@
 'use strict';
+const morgan = require('morgan');
+
 module.exports = function (app) {
 
     // setValue and getValue are merely alias
@@ -17,6 +19,7 @@ module.exports = function (app) {
     // Logging middleware, set as application
     // variable inside of server/app/configure/app-variables.js
     app.use(app.getValue('log'));
+    app.use(morgan('dev'));
 
     require('./authentication')(app);
 
