@@ -54,6 +54,19 @@ export const getDocsAndSend = (ModelStr, refPropName = false) => (req, res, next
     .then(null, next);
 }
 
+export const getParticularProperty = (ModelStr, property) =>(req, res, next) => {
+ //to get particular property asoociated a mongoose model
+ //(i.e. 'products' property on User model)
+
+  const id = req.params.id //user ID here
+  const Model = mongoose.model(ModelStr); //User model
+
+  Model.findById(id)
+  .then(document => res.send(document[property]))
+  .then(null,next)
+  
+}
+
 
 // returns middleware. No auth.
 export const getDocAndSend = ModelStr => (req, res, next) => {

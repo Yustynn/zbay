@@ -19,6 +19,8 @@ router.get('/', mustBeAdmin, getDocsAndSend);
 
 router.get('/:id', mustBeLoggedIn, getDocAndSendIfOwnerOrAdmin('User'));
 
+router.get('/:id/products', mustBeLoggedIn, getDocsAndSend('Product','user'))
+
 router.put('/:id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('User'));
 
 router.delete('/:id', mustBeLoggedIn, getDocAndDeleteIfOwnerOrAdmin('User'));
