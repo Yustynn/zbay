@@ -17,6 +17,8 @@ router.get('/', getDocsAndSend('Product'));
 
 router.get('/:id', getDocsAndSend('Product'));
 
+router.get('/:id/reviews', getDocsAndSend('Review', 'product'));
+
 router.post('/', mustBeAdmin, createDoc('Product'));
 
 router.put('/:id', mustBeAdmin, getDocAndUpdate('Product'));
