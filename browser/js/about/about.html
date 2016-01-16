@@ -1,11 +1,12 @@
 <section id="about">
-    <p>
-        This website--the very one at which you currently gaze--was created by a basic scaffolding
-        concocted at Fullstack Academy. Here are some of the people who make it all very real:
-    </p>
-    <carousel interval="2000">
-        <slide ng-repeat="image in images">
-            <img height="300" ng-src="{{ image }}" />
-        </slide>
-    </carousel>
+    <!--<p>-->
+        <!--This website&#45;&#45;the very one at which you currently gaze&#45;&#45;was created by a basic scaffolding-->
+        <!--concocted at Fullstack Academy. Here are some of the people who make it all very real:-->
+    <!--</p>-->
+    <!--<carousel interval="2000">-->
+        <!--<slide ng-repeat="image in images">-->
+            <!--<img height="300" ng-src="{{ image }}" />-->
+        <!--</slide>-->
+    <!--</carousel>-->
+    <zbay-carousel images="images" height="300"></zbay-carousel>
 </section>

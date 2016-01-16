@@ -1,3 +1,7 @@
+/**
+ *  THIS IS NOT NEEDED ANYMORE : WILL DELETE
+ * @type {*|exports|module.exports}
+ */
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var SentEmailCollection = Promise.promisifyAll(mongoose.model('SentEmailCollection'));
