@@ -1,6 +1,6 @@
 app.factory('ReviewFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/review/'
+  const url = '/api/reviews/'
 
   factory.createReview = (payload) => {
     const obj = {

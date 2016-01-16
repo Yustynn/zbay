@@ -4,7 +4,7 @@ module.exports = router;
 
 import { mustBeAdmin } from '../../../helpers/routesPermissions'
 
-import { getDocAndDelete, getDocAndUpdate, getDocsAndSend, createDoc }
+import { getDocAndDelete, getDocAndSend, getDocAndUpdate, getDocsAndSend, createDoc }
 from '../../../helpers/routesCrud';
 
 /**
@@ -12,10 +12,10 @@ from '../../../helpers/routesCrud';
  *  all users, including unregistered users can read categories
  *
  */
-
+ 
 router.get('/', getDocsAndSend('Product'));
 
-router.get('/:id', getDocsAndSend('Product'));
+router.get('/:id', getDocAndSend('Product'));
 
 router.post('/', mustBeAdmin, createDoc('Product'));
 

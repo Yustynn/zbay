@@ -13,6 +13,10 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  price: {
+    type: Number,
+    required: true
+  },
   photoUrls: [String],
   defaultPhotoUrl: String,
   stock: {

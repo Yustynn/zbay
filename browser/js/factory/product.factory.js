@@ -1,6 +1,6 @@
 app.factory('ProductFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/product/';
+  const url = '/api/products/';
 
   factory.createProduct = (payload) => {
     const obj = {
@@ -38,4 +38,3 @@ app.factory('ProductFactory', (HelperFactory) => {
 
   return factory;
 });
-

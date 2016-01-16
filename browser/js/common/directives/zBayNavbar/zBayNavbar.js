@@ -10,6 +10,10 @@ app.directive('zbaynavbar', function ($rootScope, AuthService, AUTH_EVENTS, $sta
         { label: 'Zbay', state: 'home' },
         { label: 'About', state: 'about' },
         { label: 'Documentation', state: 'docs' },
+        {
+          label: 'yTest Product Single',
+          state: 'productSingle({id: "569ad514a2f306d50a7d230f"})'
+        },
         { label: 'Members Only', state: 'membersOnly', auth: true }
       ];
 
