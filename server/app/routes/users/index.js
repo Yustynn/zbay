@@ -19,7 +19,7 @@ router.get('/', mustBeAdmin, getDocsAndSend);
 
 router.get('/:id', mustBeLoggedIn, getDocAndSendIfOwnerOrAdmin('User'));
 
-router.get('/:id/products', mustBeLoggedIn, getParticularProperty('User','products'))
+router.get('/:id/products', mustBeLoggedIn, getDocsAndSend('Product','user'))
 
 router.put('/:id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('User'));
 
