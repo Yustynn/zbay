@@ -1,7 +1,13 @@
 <div class="zbay-carousel">
-<carousel interval="2000">
-    <slide ng-repeat="image in images">
-        <img height="height" ng-src="{{ image }}" />
-    </slide>
-</carousel>
+<uib-carousel interval="10000">
+    <!--weird scrolling but will keep for timebeing-->
+    <!--show products instead-->
+    <uib-slide ng-repeat="image in images" class="slide">
+        <div>
+            <img  ng-src="{{ image }}" />
+            <img ng-src="{{ images[$index+1] }}" />
+            <img ng-src="{{ images[$index+2] }}" />
+        </div>
+    </uib-slide>
+</uib-carousel>
 </div>
