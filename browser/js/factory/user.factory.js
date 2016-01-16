@@ -1,6 +1,6 @@
 app.factory('UserFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/user/';
+  const url = '/api/users/';
 
   factory.createUser = (payload) => {
     const obj = {
@@ -38,4 +38,3 @@ app.factory('UserFactory', (HelperFactory) => {
 
   return factory;
 });
-

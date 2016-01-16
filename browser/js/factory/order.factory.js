@@ -1,6 +1,6 @@
 app.factory('OrderFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/order/';
+  const url = '/api/orders/';
 
   factory.createOrder = (payload) => {
     const obj = {

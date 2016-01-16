@@ -1,0 +1,21 @@
+<div class='row'>
+  <div class='container'>
+    <section class='col-md-8'>
+      <img class='img-responsive' src='{{product.defaultPhotoUrl}}'>
+    </section>
+    <section class='col-md-4'>
+      <h1>{{product.title}}</h1>
+      <h2>{{product.categories.join(', ')}}</h2>
+      <div>STAR_RATING</div>
+      <p>{{product.description}}</p>
+      <hr />
+      <i>{{product.stock ? "Available" : "Out of Stock"}}</i>
+      <hr />
+      <div>QUANTITY_SELECTION</div>
+      <div>
+        <span>Price: {{product.price | currency}}</span>
+        <button class='pull-right'>ADD TO CART</button>
+      </div>
+    </section>
+  </div>
+</div>

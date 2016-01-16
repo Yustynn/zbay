@@ -70,7 +70,6 @@ export const getParticularProperty = (ModelStr, property) =>(req, res, next) => 
 
 // returns middleware. No auth.
 export const getDocAndSend = ModelStr => (req, res, next) => {
-  console.log("here I am");
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
@@ -98,7 +97,7 @@ export const getDocAndDelete = ModelStr => (req, res, next) => {
 
   Model.findByIdAndRemove(req.params.id)
     .then(document => {
-      if (!document) res.status(404).send();
+      if (!document) next()();
       else return res.json(document)
     })
     .then(null, next);
@@ -112,7 +111,7 @@ export const getDocAndSendIfOwnerOrAdmin = ModelStr => (req, res, next) => {
   Model.findById(id)
     .then(document => {
 
-      if (!document) res.status(404).send;
+      if (!document) next();
       else sendDocIfOwnerOrAdmin(user, id, res)
     })
     .then(null, next);
@@ -125,7 +124,7 @@ export const getDocAndUpdateIfOwnerOrAdmin = ModelStr => (req, res, next) => {
 
   Model.findById(id)
     .then(document => {
-      if (!document) res.status(404).send;
+      if (!document) next();
       if (ownerOrAdmin(document, req.user)) {
         return Model.findByIdAndUpdate(document, req.body, {
           new: true
@@ -143,7 +142,7 @@ export const getDocAndDeleteIfOwnerOrAdmin = ModelStr => (req, res, next) => {
 
   Model.findById(id)
     .then(document => {
-      if (!document) res.status(404).send;
+      if (!document) next();
       if (ownerOrAdmin(document, req.user)) {
         return document.remove();
       } else res.status(401).end();
