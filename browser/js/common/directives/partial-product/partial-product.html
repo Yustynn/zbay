@@ -1,0 +1,7 @@
+<!--a product attr would be passed to this directive-->
+<div class="partial-product">
+    <!--img and a as display : block-->
+    <a ui-sref="productSingle({id : product._id })"><img ng-src="{{ product['defaultPhotoUrl'] }}"></a>
+    <div>{{ product['title'] }}</div>
+    <pre>{{ product['categories'] | json}}</pre>
+</div>

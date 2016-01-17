@@ -9,10 +9,21 @@ app.directive('searchbar', (ProductFactory) => {
   return {
     restrict : 'E',
     templateUrl : 'js/common/directives/search/search.html',
-    link : (scope) => {
+    link : (scope, elem) => {
+
       scope.submit = () => {
+
+        let childElem = elem.find('categorydropdown');
+        let childScope = childElem.isolateScope();
+        // we have the search term and the category name at this point
+        // generate the page with results
+        console.log(scope.search);
+        console.log(childScope.category.name);
         scope.search = "";
       }
+
+
+
     }
   }
 });
