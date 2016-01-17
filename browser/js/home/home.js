@@ -13,6 +13,5 @@ app.config(function ($stateProvider) {
 
 app.controller('HomeController', function ($scope, products) {
   $scope.products = products;
-  console.log("fdadfas");
   console.log(products);
 });

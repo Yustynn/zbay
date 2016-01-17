@@ -105,6 +105,9 @@ connectToDb
     // attaching categories and stock numbers with a product
     return Promise.all(products.map(function(product) {
       var randomCategories = generateArrayOfValues(categories);
+      if (randomCategories.length > 2) {
+        randomCategories = randomCategories.slice(0,2);
+      }
       product.categories = randomCategories;
       product.stock = generateRandomNumber(100);
       return product.save();

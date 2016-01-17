@@ -1,0 +1,28 @@
+<!--a product attr would be passed to this directive-->
+<div class="partial-product">
+    <!--img and a as display : block-->
+    <div class="images">
+        <a ui-sref="productSingle({id : product._id })"><img class="main-img" ng-src="{{ product['defaultPhotoUrl'] }}"></a>
+        <div class="title">{{ product['title'] }}</div>
+        <div class="price">{{ product['price'] | currency }}</div>
+    </div>
+    <div class="text">
+        <div class="description">{{ product['description'] }}</div>
+        <!--Category:-->
+        <!--<div class="category" ng-repeat="category in product['categories'] track by $index">-->
+            <!--<a ui-sref="products.category({category : category })">-->
+                <!--<div class="category-tags">{{category}}</div>-->
+            <!--</a>-->
+        <!--</div>-->
+        Category:
+        <div class="category">
+            <a ui-sref="products.category({category : product['categories'][0] })">
+                <div class="category-tags">{{product['categories'][0]}}</div>
+            </a>
+            <a ui-sref="products.category({category : product['categories'][1] })">
+                <div class="category-tags">{{product['categories'][1]}}</div>
+            </a>
+
+        </div>
+    </div>
+</div>
