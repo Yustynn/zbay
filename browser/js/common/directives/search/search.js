@@ -19,11 +19,16 @@ app.directive('searchbar', ($state) => {
         // generate the page with results
         console.log(scope.search);
         console.log(childScope.category.name || "");
-        scope.search = "";
+
         // need a child state that goes to the products.search
         // have not made that child state
         // look in products dir
-        $state.go("products.all");
+        let obj = {
+          search : scope.search,
+          category : (childScope.category ? childScope.category.name : "")
+        }
+        $state.go("products.search", obj);
+        scope.search = "";
 
       }
 
