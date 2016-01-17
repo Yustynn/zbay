@@ -64,7 +64,7 @@ export const getParticularProperty = (ModelStr, property) =>(req, res, next) => 
   Model.findById(id)
   .then(document => res.send(document[property]))
   .then(null,next)
-  
+
 }
 
 

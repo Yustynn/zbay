@@ -12,7 +12,7 @@ from '../../../helpers/routesCrud';
  *  all users, including unregistered users can read categories
  *
  */
- 
+
 router.get('/', getDocsAndSend('Product'));
 
 router.get('/:id', getDocAndSend('Product'));
