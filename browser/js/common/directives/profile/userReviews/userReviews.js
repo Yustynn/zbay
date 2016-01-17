@@ -4,8 +4,10 @@
 app.directive('zbUserReviews', () => {
     return {
         restrict: 'E',
-        scope: {},
-        templateUrl: '',
+        scope: {
+            reviews: '='
+        },
+        templateUrl: 'js/common/directives/profile/userReviews/userReviews.html',
         link: function(scope) {}
     };
 });

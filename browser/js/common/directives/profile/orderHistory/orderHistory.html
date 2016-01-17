@@ -1,4 +1,4 @@
 <h3>Order History</h3>
 <ul>
-    <li ng-repeat="order in orders"><a ng-src="/orders/{{order._id}}"></a>PLACEHOLDER FOR ORDERS{{order.someIdentifier}}</li>
+    <li ng-repeat="order in orders"><zb-order-history-item order="order"></zb-order-history-item></li>
 </ul>

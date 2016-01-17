@@ -4,8 +4,11 @@
 app.directive('zbOrderHistory', () => {
     return {
         restrict: 'E',
-        scope: {},
+        scope: {
+            orders: '=' // orders array from controller
+        },
         templateUrl: 'js/common/directives/profile/orderHistory/orderHistory.html',
         link: function(scope) {}
+
     };
 });
