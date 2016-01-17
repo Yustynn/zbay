@@ -1,14 +1,23 @@
+<h3>Address</h3>
 <div ng-controller="ProfileCtrl">
     <form novalidate class="simple-form">
-        <h3>Billing Address</h3>
-        Full Name: <input type="text" ng-model="user.name" /><br />
-        Address Line1: <input type="text" ng-model="user.address.line1" /><br />
-        Address Line2: <input type="text" ng-model="user.address.line2" /><br />
-        City: <input type="text" ng-model="user.address.city"/><br />
-        State: <input type="text" ng-model="user.address.state"/>male
-        <!--<input type="radio" ng-model="user.gender" value="female" />female<br />-->
-        <!--<input type="button" ng-click="reset()" value="Reset" />-->
-        <!--<input type="submit" ng-click="update(user)" value="Save" />-->
+        <div>
+            <h3>Billing Address</h3>
+            Full Name: <input type="text" ng-model="user.name" /><br />
+            Address Line1: <input type="text" ng-model="user.address.billingAddress.line1" /><br />
+            Address Line2: <input type="text" ng-model="user.address.billingAddress.line2" /><br />
+            City: <input type="text" ng-model="user.address.billingAddress.city"/><br />
+            State: <input type="text" ng-model="user.address.billingAddress.state"/>
+        </div>
+        Select if shipping does not match billing<input type="checkbox" ng-model="showShipping">
+        <div ng-show="showShipping">
+            <h3>Shipping Address</h3>
+            Full Name: <input type="text" ng-model="user.name" /><br />
+            Address Line1: <input type="text" ng-model="user.address.shippingAddress.line1" /><br />
+            Address Line2: <input type="text" ng-model="user.address.shippingAddress.line2" /><br />
+            City: <input type="text" ng-model="user.address.shippingAddress.city"/><br />
+            State: <input type="text" ng-model="user.address.shippingAddress.state"/>
+        </div>
     </form>
     <pre>user = {{user | json}}</pre>
     <pre>master = {{master | json}}</pre>

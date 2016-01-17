@@ -1,5 +1,3 @@
-console.log("Inside footerjs");
-
 app.directive('footer', function ($state) {
 
     return {

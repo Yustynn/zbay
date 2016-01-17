@@ -1,11 +1,13 @@
 /**
  * Created by Jon on 1/15/16.
  */
-app.directive('userReviews', () => {
+app.directive('zbUserReviews', () => {
     return {
         restrict: 'E',
-        scope: {},
-        templateUrl: '',
+        scope: {
+            reviews: '='
+        },
+        templateUrl: 'js/common/directives/profile/userReviews/userReviews.html',
         link: function(scope) {}
     };
 });

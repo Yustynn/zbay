@@ -1,11 +1,11 @@
 /**
  * Created by Jon on 1/15/16.
  */
-app.directive('address', () => {
+app.directive('zbAddress', () => {
     return {
         restrict: 'E',
         scope: {},
-        templateUrl: '',
+        templateUrl: 'js/common/directives/profile/address/address.html',
         link: function(scope) {}
-    };
+    }
 });

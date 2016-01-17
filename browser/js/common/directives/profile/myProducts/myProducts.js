@@ -1,11 +1,13 @@
 /**
  * Created by Jon on 1/15/16.
  */
-app.directive('myProducts', () => {
+app.directive('zbMyProducts', () => {
     return {
         restrict: 'E',
-        scope: {},
-        templateUrl: '',
+        scope: {
+            products: '='
+        },
+        templateUrl: 'js/common/directives/profile/myProducts/myProducts.html',
         link: function(scope) {}
     };
 });

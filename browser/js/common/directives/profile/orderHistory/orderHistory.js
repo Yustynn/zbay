@@ -1,11 +1,14 @@
 /**
  * Created by Jon on 1/15/16.
  */
-app.directive('orderHistory', () => {
+app.directive('zbOrderHistory', () => {
     return {
         restrict: 'E',
-        scope: {},
-        templateUrl: '',
+        scope: {
+            orders: '=' // orders array from controller
+        },
+        templateUrl: 'js/common/directives/profile/orderHistory/orderHistory.html',
         link: function(scope) {}
+
     };
 });
