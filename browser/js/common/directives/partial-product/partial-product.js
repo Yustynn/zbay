@@ -8,14 +8,17 @@ app.directive('partialProduct', (ReviewFactory) => {
   return {
     restrict : 'E',
     scope : {
-      product :'@'
+      product :'='
     },
     templateUrl : 'js/common/directives/partial-product/partial-product.html',
     link : (scope) => {
       // useful if you decide to calculate the  average rating
       // check number of reviews
-      ReviewFactory.get(scope.product._id)
+
+      ReviewFactory.getReviewByProduct(scope.product._id)
         .then( reviews => {
+          console.log(scope.product);
+          console.log(scope.product["_id"]);
           scope.reviews = reviews;
         })
     }
