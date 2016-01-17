@@ -13,27 +13,31 @@ var seedProducts = function() {
   var products = [
     {
       title: "'The Hook' Crowbar",
+      price : 34,
       description: "This ain't your father's crowbar. Smash some heads in!",
-      photoUrls: ['http://vignette4.wikia.nocookie.net/half-life/images/e/ef/Gordon_crowbar_enemies.jpg/revision/latest?cb=20090103234048&path-prefix=en'],
-      stock: 5
+      photoUrls: ["http://vignette3.wikia.nocookie.net/half-life/images/6/6f/Crowbar_world_model_ep2.jpg/revision/latest?cb=20090527021758&path-prefix=en"],
+      defaultPhotoUrl: "http://vignette3.wikia.nocookie.net/half-life/images/6/6f/Crowbar_world_model_ep2.jpg/revision/latest?cb=20090527021758&path-prefix=en",
     },
     {
       title: "'The Pacifier' Baseball Bat",
-      description: "Trying to go to sleep, but zombies keeping you up at night? Give 'em something to suck on.",
-      photoUrls: ['http://previews.123rf.com/images/Elnur/Elnur1404/Elnur140401189/27553277-Violent-man-with-baseball-bat-on-white-Stock-Photo.jpg'],
-      stock: 22
+      price : 49.99,
+      description: "Trying to go to sleep, but zombies keeping you up at night? Give 'em something to suck on.'",
+      photoUrls: ["http://muskegostormbaseball.org/wp-content/uploads/baseball.jpg"],
+      defaultPhotoUrl: "http://leanblitzconsulting.com/wp-content/uploads/2011/12/baseball-bat.jpg",
     },
     {
       title: "The Walking Dead",
+      price : 20,
       description: "Makeup to make you look like a zombie. Just don't break character (walk like the dead)",
-      photoUrls: ['http://www.ew.com/sites/default/files/styles/tout_image_612x380/public/i/2015/04/13/darren-criss.jpg?itok=3lXx0Pm-'],
-      stock: 2
+      photoUrls: ["http://makeup.school/wp-content/uploads/Pro_Makeup_Kit1.jpg","http://www.zombies.ws/wp-content/uploads/2011/10/51mQ+WkMW1L._SL500_AA300_.jpg"],
+      defaultPhotoUrl: "http://www.zombies.ws/wp-content/uploads/2011/10/51mQ+WkMW1L._SL500_AA300_.jpg"
     },
     {
       title: "Perfume",
+      price : 10,
       description: "Smell good while killing zombies. They'll thank you for it.",
-      photoUrls: ['http://cdni.wired.co.uk/1920x1280/s_v/smell.jpg'],
-      stock: 5999
+      photoUrls: ["http://www.birdswelcome.com/wp-content/uploads/2015/11/Perfume.jpg","http://i.huffpost.com/gen/1131377/images/o-PERFUME-facebook.jpg"],
+      defaultPhotoUrl: "http://i.huffpost.com/gen/1131377/images/o-PERFUME-facebook.jpg"
     }
   ]
 

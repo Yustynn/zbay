@@ -4,7 +4,7 @@ app.factory('AddressFactory', (HelperFactory) => {
   // need to check that params works this way
   factory.getAddress = (id) => {
     const obj = {
-      url : url + id ? id : '',
+      url : url + (id ? id : ''),
       method : 'GET',
     };
     return HelperFactory.httpResponse(obj);

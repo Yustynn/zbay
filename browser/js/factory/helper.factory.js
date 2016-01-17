@@ -7,5 +7,10 @@ app.factory('HelperFactory', ($http) => {
   factory.httpResponse = (obj) =>
     $http(obj).then(response => response.data);
 
+  factory.generateRandomValue = (arr, index) => {
+    let res = arr[Math.floor(Math.random() * arr.length)];
+    return res;
+  };
+
   return factory;
 });
