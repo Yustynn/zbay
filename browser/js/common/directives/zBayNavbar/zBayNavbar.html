@@ -24,6 +24,7 @@
                 </li>
             </ul>
             <button ng-show="!user" ui-sref="login" class="btn login-button sign-in">Login</button>
+            <oauth-button service-provider='Google' ng-hide='user'></oauth-button>
             <div ng-show="user" class="welcome">
                 <span>Welcome, {{ user.email }}!</span>
                 <a ng-click="logout()">Logout</a>
