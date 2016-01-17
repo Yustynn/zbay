@@ -3,7 +3,7 @@ app.directive('zbayCarousel', () => {
     restrict : 'E',
     templateUrl : 'js/common/directives/zBayCarousel/zBayCarousel.html',
     scope : {
-      images : '=',
+      products : '=',
       height : '@'
     },
     link : {

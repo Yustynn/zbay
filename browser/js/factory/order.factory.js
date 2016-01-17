@@ -13,7 +13,7 @@ app.factory('OrderFactory', (HelperFactory) => {
 
   factory.getOrder = (id) => {
     const obj = {
-      url : url + id ? id : '',
+      url : url + (id ? id : ''),
       method : 'GET'
     };
     return HelperFactory.httpResponse(obj);
