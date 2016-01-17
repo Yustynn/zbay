@@ -6,7 +6,7 @@ module.exports = router;
 import { mustBeAdmin, mustBeLoggedIn } from '../../../helpers/routesPermissions'
 import {
   createDoc,
-  getAllDocsAndSend,
+  getDocsAndSend,
   getDocAndSendIfOwnerOrAdmin,
   getDocAndUpdateIfOwnerOrAdmin,
   getDocAndDeleteIfOwnerOrAdmin
@@ -15,9 +15,11 @@ import {
 
 router.post('/', createDoc('User'));
 
-router.get('/', mustBeAdmin, getAllDocsAndSend);
+router.get('/', mustBeAdmin, getDocsAndSend);
 
 router.get('/:id', mustBeLoggedIn, getDocAndSendIfOwnerOrAdmin('User'));
+
+router.get('/:id/products', mustBeLoggedIn, getDocsAndSend('Product','user'))
 
 router.put('/:id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('User'));
 

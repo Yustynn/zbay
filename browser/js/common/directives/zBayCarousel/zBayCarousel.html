@@ -1,0 +1,13 @@
+<div class="zbay-carousel">
+<uib-carousel interval="10000">
+    <uib-slide ng-repeat="product in products" class="slide">
+        <div>
+            <!--<pre>{{ product | json}}</pre>-->
+            <!--<img ng-src="{{ product.defaultPhotoUrl }}" />-->
+            <a ui-sref="productSingle({id : product._id })"><img ng-src="{{ product['defaultPhotoUrl'] }}" /></a>
+            <a ui-sref="productSingle({id : products[$index+1]._id })"><img ng-src="{{ products[$index+1]['defaultPhotoUrl'] }}" /></a>
+            <a ui-sref="productSingle({id : products[$index+1]._id })"><img ng-src="{{ products[$index+2]['defaultPhotoUrl'] }}" /></a>
+        </div>
+    </uib-slide>
+</uib-carousel>
+</div>

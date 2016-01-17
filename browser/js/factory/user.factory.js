@@ -1,6 +1,6 @@
 app.factory('UserFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/user/';
+  const url = '/api/users/';
 
   factory.createUser = (payload) => {
     const obj = {
@@ -13,7 +13,7 @@ app.factory('UserFactory', (HelperFactory) => {
 
   factory.getUser = (id) => {
     const obj = {
-      url : url + id ? id : '',
+      url : url + (id ? id : ''),
       method : 'GET',
     };
     return HelperFactory.httpResponse(obj);
@@ -38,4 +38,3 @@ app.factory('UserFactory', (HelperFactory) => {
 
   return factory;
 });
-

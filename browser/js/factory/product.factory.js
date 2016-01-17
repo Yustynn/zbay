@@ -1,6 +1,6 @@
 app.factory('ProductFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/product/';
+  const url = '/api/products/';
 
   factory.createProduct = (payload) => {
     const obj = {
@@ -12,10 +12,12 @@ app.factory('ProductFactory', (HelperFactory) => {
   };
 
   factory.getProduct = (id) => {
+    console.log("in get product");
     const obj = {
-      url : url + id,
+      url : url + (id ? id : ''),
       method : 'GET'
     };
+    console.log(obj);
     return HelperFactory.httpResponse(obj);
   };
 
@@ -38,4 +40,3 @@ app.factory('ProductFactory', (HelperFactory) => {
 
   return factory;
 });
-
