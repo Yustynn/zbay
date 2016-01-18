@@ -10,9 +10,12 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('ProfileCtrl', $scope => {
+app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService) => {
     $scope.showShipping = false;
 
+    var currentUser = AuthService.getLoggedInUser().then(function(user){
+        console.log('USRR ',user);
+    })
     $scope.orders = [   // Dummy data; Implement this with factory call to DB
         {
             _id: Math.floor(Math.random() * 10000000),
@@ -36,18 +39,20 @@ app.controller('ProfileCtrl', $scope => {
         }
     ]
 
-    $scope.reviews = [
-        {
-            product: "product name1",
-            starRating: 5,
-            text: "THIS IS A REVIEW"
-        },
-        {
-            product: "product name2",
-            starRating: 4,
-            text: "THIS IS ANOTHER REVIEW"
-        }
-    ]
+    // $scope.reviews = [
+    //     {
+    //         product: "product name1",
+    //         starRating: 5,
+    //         text: "THIS IS A REVIEW"
+    //     },
+    //     {
+    //         product: "product name2",
+    //         starRating: 4,
+    //         text: "THIS IS ANOTHER REVIEW"
+    //     }
+    // ]
+
+
 
     $scope.products = [
         {

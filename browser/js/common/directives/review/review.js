@@ -11,7 +11,7 @@ app.directive('review', function(ProductFactory,UserFactory){
 				//we got reviews based on the product.. but one problem.. we need username 
 				//but we only have userId for now.. we'll do Promise.all
 
-				// console.log(reviews);
+				console.log('cha cha ',reviews);
 				// console.log('woom woom ',reviews);
 				scope.reviews = [];
 				for(var x=0; x<reviews.length; x++)
