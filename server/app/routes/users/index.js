@@ -19,9 +19,9 @@ router.get('/', mustBeAdmin, getDocsAndSend);
 
 router.get('/:id', mustBeLoggedIn, getDocAndSendIfOwnerOrAdmin('User'));
 
-router.get('/:id/products', mustBeLoggedIn, getDocsAndSend('Product','user'))
+router.get('/:id/products', mustBeLoggedIn, getDocsAndSend('Product','user'));
 
-router.get('/:id/reviews', mustBeLoggedIn, getDocsAndSend('Review','user'))
+router.get('/:id/reviews', mustBeLoggedIn, getDocsAndSend('Review','user'));
 
 router.put('/:id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('User'));
 

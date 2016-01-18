@@ -7,40 +7,46 @@ app.config($stateProvider => {
         url: '/profile',
         templateUrl: 'js/userProfile/userProfile.html',
         resolve: {
-            //test: function() {
-            //    return "You will work";
-            //},
-            hibuddy: function(AuthService) {
-                console.log(AuthService)
+            user: function(AuthService) {
                 return AuthService.getLoggedInUser().then(user => user);
             }
         },
         controller: 'ProfileCtrl'
-
     });
 });
 
-app.controller('ProfileCtrl', function($scope, hibuddy, UserFactory) {
+app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
     $scope.showShipping = false;
     $scope.error = null;
-    //console.log(test);
-    console.log("user", hibuddy)
 
-    //
-    //if (!user) {
-    //    console.log("No user Found");
-    //    $state.go('home');
-    //}
-    //
-    //UserFactory.getReviewsForUser(user._id)
-    //    .then(reviewsArr => {
-    //        //console.log(reviewsArr)
-    //        $scope.reviews = reviewsArr;
-    //    })
-    //    .then(null, (err) => { $scope.error = err});
-    //
+    if (!user) {
+        console.log("No user Found");
+        $state.go('home');
+    }
 
+    UserFactory.getReviewsForUser(user._id)
+        .then(reviewsArr => {
+            $scope.reviews = reviewsArr;
+        })
+        .then(null, (err) => { $scope.error = err});
 
+    UserFactory.getProductsForUser(user._id)
+        .then(productsArr => {
+            console.log("Products", productsArr);
+            $scope.products = productsArr;
+        })
+        .then(null, (err) => { $scope.error = err});
+
+    //$scope.products = [
+    //    {
+    //        title: "Product title 1",
+    //        description: "Some description1"
+    //    },
+    //    {
+    //        title: "Product title 2",
+    //        description: "Some description2"
+    //    }
+    //];
 
     $scope.orders = [   // Dummy data; Implement this with factory call to DB
         {
@@ -65,15 +71,4 @@ app.controller('ProfileCtrl', function($scope, hibuddy, UserFactory) {
         }
     ]
 
-    $scope.products = [
-        {
-            title: "Product title 1",
-            description: "Some description1"
-        },
-        {
-            title: "Product title 2",
-            description: "Some description2"
-        }
-    ]
-    console.log("End of ctrl")
 });
