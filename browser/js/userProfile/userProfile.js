@@ -16,6 +16,7 @@ app.config($stateProvider => {
 });
 
 app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
+
     $scope.showShipping = false;
     $scope.error = null;
 

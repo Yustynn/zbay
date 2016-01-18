@@ -135,6 +135,31 @@ export const getDocAndUpdateIfOwnerOrAdmin = ModelStr => (req, res, next) => {
     .then(null, next)
 };
 
+export const getDocs = (ModelStr, refPropName = false) => (req, res, next) => {
+  const Model = mongoose.model(ModelStr);
+  let query = {};
+  if (refPropName) {
+    query[refPropName] = req.params.id
+  }
+
+  Model.find(query)
+    .then(documents => res.json(documents))
+    .then(null, next);
+}
+
+export const getDocsSendAndPopulate = (ModelStr, refPropName = false, populateSchema) => (req, res, next) => {
+  const Model = mongoose.model(ModelStr);
+  let query = {};
+  if (refPropName) {
+    query[refPropName] = req.params.id
+  }
+
+  Model.find(query)
+    .populate(populateSchema)
+    .then(documents => res.json(documents))
+    .then(null, next);
+}
+
 // returns middleware
 export const getDocAndDeleteIfOwnerOrAdmin = ModelStr => (req, res, next) => {
   const id = req.params.id;
