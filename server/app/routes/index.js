@@ -8,6 +8,7 @@ router.use('/orders', require('./orders'));
 router.use('/products', require('./products'));
 router.use('/reviews', require('./reviews'));
 router.use('/users', require('./users'));
+router.use('/orderitem', require('./orderItems'));
 
 // Make sure this is after all of
 // the registered routes!

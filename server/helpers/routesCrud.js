@@ -24,7 +24,7 @@ const ownerOrAdmin = (doc, user) => {
 }
 
 const sendDocIfOwnerOrAdmin = (doc, user, res) => {
-  if (ownerOrAdmin(doc, user)) res.json(order);
+  if (ownerOrAdmin(doc, user)) res.json(doc);
   else res.status(401).end();
 };
 
@@ -112,7 +112,7 @@ export const getDocAndSendIfOwnerOrAdmin = ModelStr => (req, res, next) => {
     .then(document => {
 
       if (!document) next();
-      else sendDocIfOwnerOrAdmin(user, id, res)
+      else sendDocIfOwnerOrAdmin(req.user, id, res)
     })
     .then(null, next);
 };
