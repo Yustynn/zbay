@@ -1,3 +1,6 @@
+/**
+ * Clean up as lower priority as of Jan 17
+ */
 app.factory('CartFactory', () => {
   let factory = {};
   if (!window.localStorage.getItem("cart")){
