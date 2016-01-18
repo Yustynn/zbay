@@ -32,50 +32,16 @@ app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
 
     UserFactory.getProductsForUser(user._id)
         .then(productsArr => {
-            console.log("Products", productsArr);
+            //console.log("Products", productsArr);
             $scope.products = productsArr;
         })
         .then(null, (err) => { $scope.error = err});
 
     UserFactory.getOrdersForUser(user._id)
         .then(ordersArr => {
-            console.log("Orders", ordersArr);
+            //console.log("Orders", ordersArr);
             $scope.orders = ordersArr;
         })
         .then(null, (err) => { $scope.error = err});
-
-    //$scope.products = [
-    //    {
-    //        title: "Product title 1",
-    //        description: "Some description1"
-    //    },
-    //    {
-    //        title: "Product title 2",
-    //        description: "Some description2"
-    //    }
-    //];
-
-    //$scope.orders = [   // Dummy data; Implement this with factory call to DB
-    //    {
-    //        _id: Math.floor(Math.random() * 10000000),
-    //        datetime: Date.now(),
-    //        status: 'shipped'
-    //    },
-    //    {
-    //        _id: Math.floor(Math.random() * 10000000),
-    //        datetime: Date.now(),
-    //        status: 'shipped'
-    //    },
-    //    {
-    //        _id: Math.floor(Math.random() * 10000000),
-    //        datetime: Date.now(),
-    //        status: 'shipped'
-    //    },
-    //    {
-    //        _id: Math.floor(Math.random() * 10000000),
-    //        datetime: Date.now(),
-    //        status: 'shipped'
-    //    }
-    //]
 
 });
