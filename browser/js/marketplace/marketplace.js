@@ -40,7 +40,7 @@ app.controller('MarketplaceCtrl', ($scope, ProductFactory, CategoryFactory, User
             stock: $scope.stock
         })
         .then(newProduct => {
-            console.dir(newProduct);
+            //console.dir(newProduct);
             $scope.productsForSale.push(newProduct);
         })
     }
