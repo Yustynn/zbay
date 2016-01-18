@@ -1,5 +1,6 @@
 /**
  * Clean up as lower priority as of Jan 17
+ * if user is authenticated, should reflect server cart instead
  */
 app.factory('CartFactory', () => {
   let factory = {};
