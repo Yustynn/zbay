@@ -104,15 +104,15 @@ connectToDb
   .then(function(reviews) {
     // for every review
     // find the user in that review
-    return reviews.forEach(function(review) {
-      users.forEach(function(user) {
-        // so bad
-        if (user._id === review.user) {
-          user.reviews.push(review);
-          user.save();
-        }
-      })
-    });
+    //return reviews.forEach(function(review) {
+    //  users.forEach(function(user) {
+    //    // so bad
+    //    if (user._id === review.user) {
+    //      user.reviews.push(review);
+    //      user.save();
+    //    }
+    //  })
+    //});
 
   })
   .then(function() {
