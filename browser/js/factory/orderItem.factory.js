@@ -1,8 +1,8 @@
-app.factory('ProductFactory', (HelperFactory) => {
+app.factory('OrderItemFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/products/';
+  const url = '/api/orderitem/';
 
-  factory.createProduct = (payload) => {
+  factory.createOrderItem = (payload) => {
     const obj = {
       url : url,
       method : 'POST',
@@ -11,7 +11,7 @@ app.factory('ProductFactory', (HelperFactory) => {
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.getProduct = (id) => {
+  factory.getOrderItem = (id) => {
     const obj = {
       url : url + (id ? id : ''),
       method : 'GET'
@@ -19,7 +19,7 @@ app.factory('ProductFactory', (HelperFactory) => {
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.updateProduct = (id, payload) => {
+  factory.updateOrderItem = (id, payload) => {
     const obj = {
       url : url + id,
       method : 'PUT',
@@ -28,7 +28,7 @@ app.factory('ProductFactory', (HelperFactory) => {
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.deleteProduct = (id) => {
+  factory.deleteOrderItem = (id) => {
     const obj = {
       url : url + id,
       method : 'DELETE'
