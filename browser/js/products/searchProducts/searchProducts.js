@@ -12,7 +12,6 @@ app.config( ($stateProvider) => {
  * will do later
  */
 app.controller('SearchProductsCtrl', ($scope, $stateParams) => {
-  console.log($stateParams.search);
   $scope.products = $scope.products.filter(function (product) {
     return product.title.toLowerCase().includes($stateParams.search.toLowerCase());
   });
