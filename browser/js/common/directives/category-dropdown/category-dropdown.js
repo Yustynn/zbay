@@ -17,7 +17,6 @@ app.directive('categorydropdown', (CategoryFactory) => {
       scope.category = "";
       scope.updateSelection = (category) => {
         scope.category = category;
-        console.log(scope.category);
       }
     }
   };

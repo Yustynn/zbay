@@ -24,6 +24,10 @@
   }
 
   .text {
+    .cart-button {
+      display : block;
+    }
+
     .category {
       div {
         display : inline-block;
@@ -44,5 +48,7 @@
       }
     }
   }
+
+
 
 }
