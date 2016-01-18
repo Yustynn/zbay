@@ -7,7 +7,7 @@ app.directive('zbUserReviewItem', function() {
         scope: {
             review: '=' // review array from controller
         },
-        template: '<a ng-href="/reviews/{{review._id}}">Link To review page?</a>{{review}}',
+        template: '<a ng-href="/reviews/{{review._id}}">Product: {{review.product}} Stars: {{review.starRating}}</a>',
         link: function () {
         }
     }

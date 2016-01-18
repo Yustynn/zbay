@@ -2,7 +2,7 @@
 const router = require('express').Router();
 module.exports = router;
 
-import { mustBeAdmin } from '../../../helpers/routesPermissions'
+import { mustBeAdmin, mustBeLoggedIn } from '../../../helpers/routesPermissions'
 
 import { getDocAndDelete, getDocAndSend, getDocAndUpdate, getDocsAndSend, createDoc }
 from '../../../helpers/routesCrud';
@@ -19,7 +19,7 @@ router.get('/:id', getDocAndSend('Product'));
 
 router.get('/:id/reviews', getDocsAndSend('Review', 'product'));
 
-router.post('/', mustBeAdmin, createDoc('Product'));
+router.post('/', mustBeLoggedIn, createDoc('Product', true));
 
 router.put('/:id', mustBeAdmin, getDocAndUpdate('Product'));
 
