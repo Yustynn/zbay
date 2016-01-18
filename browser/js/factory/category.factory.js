@@ -2,36 +2,37 @@
  *  Get all categories and add a category
  *  Using $http instead of $http.get, $http.post for explicitness, aesthetics
  */
-app.factory('CategoryFactory', (HelperFactory) => {
+app.factory('CategoryFactory', HelperFactory => {
   const factory = {};
   const url = '/api/categories/';
 
-  factory.addCategory = (category) => {
+  factory.addCategory = (categoryInfo) => {
     const obj = {
       url : url,
       method : 'POST',
-      data : { name : category }
+      data : categoryInfo
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.getCategory = () => {
+  factory.getCategory = id => {
     const obj = {
-      url : url,
+      url : url + (id ? id : ''),
       method : 'GET'
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.updateCategory = (id) => {
+  factory.updateCategory = (id, update) => {
     const obj = {
       url : url + id,
-      method : 'PUT'
+      method : 'PUT',
+      data : update
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.deleteCategory = (id) => {
+  factory.deleteCategory = id => {
     const obj = {
       url : url + id,
       method : 'DELETE'
@@ -41,4 +42,3 @@ app.factory('CategoryFactory', (HelperFactory) => {
 
   return factory;
 });
-
