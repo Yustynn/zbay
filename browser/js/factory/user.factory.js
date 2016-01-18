@@ -35,6 +35,14 @@ app.factory('UserFactory', (HelperFactory) => {
     return HelperFactory.httpResponse(obj);
   };
 
+    factory.getOrdersForUser = (userId) => {
+    const obj = {
+      url : url + userId + '/orders',
+      method : 'GET'
+    };
+    return HelperFactory.httpResponse(obj);
+  };
+
   factory.updateUser = (id, payload) => {
     const obj = {
       url : url + id,

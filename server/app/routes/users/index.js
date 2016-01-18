@@ -23,6 +23,8 @@ router.get('/:id/products', mustBeLoggedIn, getDocsAndSend('Product','user'));
 
 router.get('/:id/reviews', mustBeLoggedIn, getDocsAndSend('Review','user'));
 
+router.get('/:id/orders', mustBeLoggedIn, getDocsAndSend('Order','user'));
+
 router.put('/:id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('User'));
 
 router.delete('/:id', mustBeLoggedIn, getDocAndDeleteIfOwnerOrAdmin('User'));
