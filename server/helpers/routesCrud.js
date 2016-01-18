@@ -24,7 +24,7 @@ const ownerOrAdmin = (doc, user) => {
 }
 
 const sendDocIfOwnerOrAdmin = (doc, user, res) => {
-  if (ownerOrAdmin(doc, user)) res.json(order);
+  if (ownerOrAdmin(doc, user)) res.json(doc);
   else res.status(401).end();
 };
 
@@ -112,7 +112,7 @@ export const getDocAndSendIfOwnerOrAdmin = ModelStr => (req, res, next) => {
     .then(document => {
 
       if (!document) next();
-      else sendDocIfOwnerOrAdmin(user, id, res)
+      else sendDocIfOwnerOrAdmin(req.user, id, res)
     })
     .then(null, next);
 };
@@ -134,6 +134,31 @@ export const getDocAndUpdateIfOwnerOrAdmin = ModelStr => (req, res, next) => {
     .then(document => res.status(200).json(document))
     .then(null, next)
 };
+
+export const getDocs = (ModelStr, refPropName = false) => (req, res, next) => {
+  const Model = mongoose.model(ModelStr);
+  let query = {};
+  if (refPropName) {
+    query[refPropName] = req.params.id
+  }
+
+  Model.find(query)
+    .then(documents => res.json(documents))
+    .then(null, next);
+}
+
+export const getDocsSendAndPopulate = (ModelStr, refPropName = false, populateSchema) => (req, res, next) => {
+  const Model = mongoose.model(ModelStr);
+  let query = {};
+  if (refPropName) {
+    query[refPropName] = req.params.id
+  }
+
+  Model.find(query)
+    .populate(populateSchema)
+    .then(documents => res.json(documents))
+    .then(null, next);
+}
 
 // returns middleware
 export const getDocAndDeleteIfOwnerOrAdmin = ModelStr => (req, res, next) => {

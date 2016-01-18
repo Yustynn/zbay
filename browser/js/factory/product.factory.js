@@ -38,5 +38,13 @@ app.factory('ProductFactory', (HelperFactory) => {
     return HelperFactory.httpResponse(obj);
   };
 
+  factory.getProductReviews = (id) => {
+    const obj = {
+      url: url + id + '/reviews',
+      method: 'GET',
+    }
+    return HelperFactory.httpResponse(obj);
+  }
+
   return factory;
 });
