@@ -50,7 +50,9 @@ export const getDocsAndSend = (ModelStr, refPropName = false) => (req, res, next
   }
 
   Model.find(query)
-    .then(documents => res.json(documents))
+    .then(documents => {
+          console.log(documents);
+          res.json(documents)})
     .then(null, next);
 }
 
