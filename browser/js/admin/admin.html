@@ -1,0 +1,15 @@
+<h1 class='text-center'>Admin: Manage Categories</h1>
+<hr />
+<a style='cursor: pointer;' ng-click='showAddCategory = !showAddCategory'>Add a Category</a>
+<div ng-show='showAddCategory' id="add-category">
+  <form ng-submit='createCategory(categoryInfo)'>
+    <div class="form-control">
+      <label for='name'>Category Name</label>
+      <input type='text' ng-model='categoryInfo.name' placeholder='New Category'>
+      <button type='submit' class='btn btn-success'>Create Category</button>
+      <br />
+    </div>
+  </form>
+  <br />
+</div>
+<modify-category ng-repeat="category in categories | orderBy:'name'" category='category'></modify-category>

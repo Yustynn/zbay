@@ -1,0 +1,10 @@
+<form class='modify-category' ng-submit='sendCategoryUpdate(categoryUpdate)'>
+  <div class='form-group'>
+    <h4>{{ category.name }}</h4>
+    <label for='name'>Category Name</label>
+    <input type='text' ng-model='categoryUpdate.name' class='form-control' placeholder="{{ category.name }}">
+  </div>
+  <button class="btn btn-default" type='submit'>Update Category</button>
+  <button class="btn btn-danger" ng-click='deleteCategory()'>Delete Category</button>
+</form>
+<br />

@@ -23,10 +23,10 @@ var schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order'
     }],
-    reviews: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review'
-    }],
+    //reviews: [{
+    //    type: mongoose.Schema.Types.ObjectId,
+    //    ref: 'Review'
+    //}],
     salt: {
         type: String
     },
