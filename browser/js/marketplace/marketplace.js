@@ -15,7 +15,7 @@ app.config($stateProvider => {
 app.controller('MarketplaceCtrl', ($scope, ProductFactory, CategoryFactory, UserFactory, user, $state) => {
 
     if (!user) {
-        console.log("No user Found");
+        //console.log("No user Found");
         $state.go('home');
     }
 
