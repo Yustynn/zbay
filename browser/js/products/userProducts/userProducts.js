@@ -13,6 +13,7 @@ app.config($stateProvider => {
       templateUrl: 'js/products/userProducts/userProducts.html',
       controller: 'UserProductCtrl',
       resolve : {
+
         // we don't have a backend cart yet
         // have a way to add to a user cart on server
         //userProducts : (UserFactory, $stateParams) => {
@@ -32,5 +33,4 @@ app.controller('UserProductCtrl', ($scope,  $stateParams) => {
   // or more accurately, I would set the localStorage to be what is on the server
   // while backend cart does not exist the window localStorage will be current implementation
   $scope.products = JSON.parse(window.localStorage.getItem("cart"));
-  //$scope.userProducts = userProducts;
 });

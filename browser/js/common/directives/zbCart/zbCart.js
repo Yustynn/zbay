@@ -13,7 +13,8 @@ app.directive('zbCart', ['CartFactory', 'OrderFactory', 'OrderItemFactory', 'Pro
         scope.categories = categories;
         console.log(scope.categories);
       });
-      //when you know the product and the quantity
+      // when you know the product and the quantity
+      // one big function :(
       scope.updateCart = () => {
         AuthService.getLoggedInUser()
           .then(function (user) {
@@ -41,7 +42,6 @@ app.directive('zbCart', ['CartFactory', 'OrderFactory', 'OrderItemFactory', 'Pro
             let orderItemsPromise = [];
             if (cartOrders) {
               cartOrders[0].orderItems.forEach(function (order) {
-                console.log("OREDER ITEMS, ", order);
                 orderItemsPromise.push(OrderItemFactory.getOrderItem(order));
               });
             }
@@ -72,16 +72,20 @@ app.directive('zbCart', ['CartFactory', 'OrderFactory', 'OrderItemFactory', 'Pro
               });
               return product;
             })
-            scope.cartfactory.cart = products;
-            localStorage.setItem("cart", JSON.stringify(products));
+            scope.cartfactory.cart = JSON.parse(localStorage["cart"]) || products;
+            localStorage.removeItem('cart');
+            localStorage.setItem("cart", JSON.stringify(scope.cartfactory.cart));
           })
       }
 
-      scope.$on(AUTH_EVENTS.loginSuccess, function(e){
-        // respond to event here
-        console.log("in the cart checking for login")
-        scope.updateCart;
-      });
+      //if local storage is
+      // less than backend, use localstorage
+
+      //scope.$on(AUTH_EVENTS.loginSuccess, function(e){
+      //  // respond to event here
+      //  console.log("in the cart checking for login")
+      //  scope.updateCart;
+      //});
 
       scope.updateCart();
     }
