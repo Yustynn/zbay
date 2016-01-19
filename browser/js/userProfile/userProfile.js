@@ -14,17 +14,56 @@ app.config($stateProvider => {
         controller: 'ProfileCtrl'
     });
 });
+<<<<<<< HEAD
 ​
 app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
 ​
     $scope.showShipping = false;
     $scope.error = null;
 ​
+=======
+
+
+app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService, UserFactory) => {
+
+    $scope.showShipping = false;
+    $scope.error = null;
+
+    var currentUser = AuthService.getLoggedInUser().then(function(user){
+        console.log('dat user doe ', user);
+    })
+    $scope.orders = [   // Dummy data; Implement this with factory call to DB
+        {
+            _id: Math.floor(Math.random() * 10000000),
+            datetime: Date.now(),
+            status: 'shipped'
+        },
+        {
+            _id: Math.floor(Math.random() * 10000000),
+            datetime: Date.now(),
+            status: 'shipped'
+        },
+        {
+            _id: Math.floor(Math.random() * 10000000),
+            datetime: Date.now(),
+            status: 'shipped'
+        },
+        {
+            _id: Math.floor(Math.random() * 10000000),
+            datetime: Date.now(),
+            status: 'shipped'
+        }
+    ]
+>>>>>>> master
     if (!user) {
         console.log("No user Found");
         $state.go('home');
     }
+<<<<<<< HEAD
 ​
+=======
+
+>>>>>>> master
     UserFactory.getReviewsForUser(user._id)
         .then(reviewsArr => {
             $scope.reviews = reviewsArr;
