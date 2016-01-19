@@ -10,11 +10,11 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService) => {
+app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService, UserFactory) => {
     $scope.showShipping = false;
 
     var currentUser = AuthService.getLoggedInUser().then(function(user){
-        console.log('USRR ',user);
+        console.log('dat user doe ', user);
     })
     $scope.orders = [   // Dummy data; Implement this with factory call to DB
         {
