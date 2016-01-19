@@ -27,6 +27,14 @@ app.factory('UserFactory', (HelperFactory) => {
     return HelperFactory.httpResponse(obj);
   };
 
+    factory.getAddressForUser = (userId) => {
+    const obj = {
+      url : url + userId + '/address',
+      method : 'GET'
+    };
+    return HelperFactory.httpResponse(obj);
+  };
+
     factory.getProductsForUser = (userId) => {
     const obj = {
       url : url + userId + '/products',

@@ -16,6 +16,7 @@ app.config($stateProvider => {
 });
 
 app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
+    $scope.user = user;
 
     $scope.showShipping = false;
     $scope.error = null;
@@ -24,6 +25,8 @@ app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
         console.log("No user Found");
         $state.go('home');
     }
+
+
 
     UserFactory.getReviewsForUser(user._id)
         .then(reviewsArr => {

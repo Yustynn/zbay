@@ -42,10 +42,10 @@ var schema = new mongoose.Schema({
     google: {
         id: String
     },
-    address: [{
+    address: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Address'
-    }],
+    },
     products: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product'
