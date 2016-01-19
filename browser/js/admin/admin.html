@@ -1,15 +1,34 @@
-<h1 class='text-center'>Admin: Manage Categories</h1>
-<hr />
-<a style='cursor: pointer;' ng-click='showAddCategory = !showAddCategory'>Add a Category</a>
-<div ng-show='showAddCategory' id="add-category">
-  <form ng-submit='createCategory(categoryInfo)'>
-    <div class="form-control">
-      <label for='name'>Category Name</label>
-      <input type='text' ng-model='categoryInfo.name' placeholder='New Category'>
-      <button type='submit' class='btn btn-success'>Create Category</button>
-      <br />
+<section id='adminify'>
+  <h1 class='text-center'>Adminify User by Email</h1>
+  <uib-alert type="danger" ng-show="adminifyError">
+      {{ adminifyError }}
+  </uib-alert>
+  <uib-alert type="success" ng-show="adminifySuccess">
+      {{ adminifySuccess }}
+  </uib-alert>
+  <form ng-submit='adminify(userInfo.email)'>
+    <div class='form-control'>
+      <label for='email'>Email</label>
+      <input type='text' ng-model='userInfo.email' placeholder="User's Email Address">
+      <button type='submit' class='btn btn-success'>Adminify User</button>
     </div>
   </form>
-  <br />
-</div>
-<modify-category ng-repeat="category in categories | orderBy:'name'" category='category'></modify-category>
+</section>
+
+<section id='manage-categories'>
+  <h1 class='text-center'>Manage Categories</h1>
+  <hr />
+  <a style='cursor: pointer;' ng-click='showAddCategory = !showAddCategory'>Add a Category</a>
+  <div ng-show='showAddCategory' id="add-category">
+    <form ng-submit='createCategory(categoryInfo)'>
+      <div class="form-control">
+        <label for='name'>Category Name</label>
+        <input type='text' ng-model='categoryInfo.name' placeholder='New Category'>
+        <button type='submit' class='btn btn-success'>Create Category</button>
+        <br />
+      </div>
+    </form>
+    <br />
+  </div>
+  <modify-category ng-repeat="category in categories | orderBy:'name'" category='category'></modify-category>
+</section>
