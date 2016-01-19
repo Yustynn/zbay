@@ -2,7 +2,6 @@
  * Created by Jon on 1/15/16.
  */
 app.config($stateProvider => {
-​
     $stateProvider.state('userProfile', {
         url: '/profile',
         templateUrl: 'js/userProfile/userProfile.html',
@@ -57,19 +56,16 @@ app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService, UserFactory) =>
             $scope.reviews = reviewsArr;
         })
         .then(null, (err) => { $scope.error = err});
-​
     UserFactory.getProductsForUser(user._id)
         .then(productsArr => {
             //console.log("Products", productsArr);
             $scope.products = productsArr;
         })
         .then(null, (err) => { $scope.error = err});
-​
     UserFactory.getOrdersForUser(user._id)
         .then(ordersArr => {
             //console.log("Orders", ordersArr);
             $scope.orders = ordersArr;
         })
         .then(null, (err) => { $scope.error = err});
-​
 });
