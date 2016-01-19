@@ -45,28 +45,12 @@ export const createDoc = (ModelStr, tieToUser = false) => (req, res, next) => {
 export const getDocsAndSend = (ModelStr, refPropName = false, populateParams = []) => (req, res, next) => {
   const Model = mongoose.model(ModelStr);
   let query = {};
-  if (refPropName) {
-    query[refPropName] = req.params.id
-  }
+  if (refPropName) query[refPropName] = req.params.id;
 
   Model.find(query).populate(populateParams.join(" "))
     .then(documents => res.json(documents))
     .then(null, next);
 }
-
-export const getParticularProperty = (ModelStr, property) =>(req, res, next) => {
- //to get particular property asoociated a mongoose model
- //(i.e. 'products' property on User model)
-
-  const id = req.params.id //user ID here
-  const Model = mongoose.model(ModelStr); //User model
-
-  Model.findById(id)
-  .then(document => res.send(document[property]))
-  .then(null,next)
-
-}
-
 
 // returns middleware. No auth.
 export const getDocAndSend = (ModelStr, populateParams=[]) => (req, res, next) => {
@@ -147,6 +131,7 @@ export const getDocs = (ModelStr, refPropName = false) => (req, res, next) => {
     .then(null, next);
 }
 
+// Still used, Victor?
 export const getDocsSendAndPopulate = (ModelStr, refPropName = false, populateSchema) => (req, res, next) => {
   const Model = mongoose.model(ModelStr);
   let query = {};

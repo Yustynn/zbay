@@ -15,7 +15,7 @@ import {
 
 router.post('/', createDoc('User'));
 
-router.get('/', mustBeAdmin, getDocsAndSend);
+router.get('/', mustBeAdmin, getDocsAndSend('User'));
 
 router.get('/:id', mustBeLoggedIn, getDocAndSendIfOwnerOrAdmin('User'));
 

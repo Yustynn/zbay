@@ -11,7 +11,20 @@ app.config($stateProvider => {
   })
 });
 
-app.controller('ProductSingleCtrl', ($scope, product) => {
+app.controller('ProductSingleCtrl', ($scope, product, AUTH_EVENTS, AuthService, ReviewFactory, UserFactory) => {
   $scope.product = product;
+  $scope.addReview = function(){
+    var postObj = {};
+    AuthService.getLoggedInUser().then(function(user){
+        postObj['user'] = user['_id'];
+        postObj['product'] = product['_id'];
+        postObj['starRating'] = $scope.review.starRating;
+        postObj['text'] = $scope.review.text;
+        ReviewFactory.createReview(postObj)
+        .then(function(obj){
+          console.log('objj ', obj);
+        })
+    })
+  }
   console.log(product);
 });
