@@ -42,14 +42,14 @@ export const createDoc = (ModelStr, tieToUser = false) => (req, res, next) => {
 }
 
 // returns middleware. No auth. Optionally also gets docs based on req.params.id
-export const getDocsAndSend = (ModelStr, refPropName = false) => (req, res, next) => {
+export const getDocsAndSend = (ModelStr, refPropName = false, populateParams = []) => (req, res, next) => {
   const Model = mongoose.model(ModelStr);
   let query = {};
   if (refPropName) {
     query[refPropName] = req.params.id
   }
 
-  Model.find(query)
+  Model.find(query).populate(populateParams.join(" "))
     .then(documents => res.json(documents))
     .then(null, next);
 }
@@ -69,11 +69,11 @@ export const getParticularProperty = (ModelStr, property) =>(req, res, next) => 
 
 
 // returns middleware. No auth.
-export const getDocAndSend = ModelStr => (req, res, next) => {
+export const getDocAndSend = (ModelStr, populateParams=[]) => (req, res, next) => {
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
-  Model.findById(id)
+  Model.findById(id).populate(populateParams.join(" "))
     .then(document => res.status(200).json(document))
     .then(null, next);
 }
@@ -104,15 +104,15 @@ export const getDocAndDelete = ModelStr => (req, res, next) => {
 }
 
 // returns middleware
-export const getDocAndSendIfOwnerOrAdmin = ModelStr => (req, res, next) => {
+export const getDocAndSendIfOwnerOrAdmin = (ModelStr, populateParams = []) => (req, res, next) => {
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
-  Model.findById(id)
+  Model.findById(id).populate(populateParams.join(" "))
     .then(document => {
 
       if (!document) next();
-      else sendDocIfOwnerOrAdmin(req.user, id, res)
+      else sendDocIfOwnerOrAdmin(document, req.user, res)
     })
     .then(null, next);
 };

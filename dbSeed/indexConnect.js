@@ -102,6 +102,7 @@ connectToDb
     return Review.createAsync(reviewData);
   })
   .then(function(reviews) {
+    //we updated the user to not have an array of reviews
     // for every review
     // find the user in that review
     //return reviews.forEach(function(review) {
@@ -134,9 +135,11 @@ connectToDb
       for (var j = 0; j < 5; j++) {
         var orderItem = new OrderItem({
           product : getRandomFromArray(products),
-          quantity :generateRandomNumber(50)
+          quantity :generateRandomNumber(3)
         });
         items.push(orderItem);
+        // bad since I am not handling as a promise
+        orderItem.save();
       }
 
       var order = new Order({

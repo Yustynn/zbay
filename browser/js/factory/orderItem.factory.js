@@ -12,6 +12,7 @@ app.factory('OrderItemFactory', (HelperFactory) => {
   };
 
   factory.getOrderItem = (id) => {
+    console.log(id);
     const obj = {
       url : url + (id ? id : ''),
       method : 'GET'

@@ -24,8 +24,9 @@
             </a>
 
         </div>
+
         Cart :
-        <div class="cart-button">
+        <div class="cart-button" ng-hide="isCartState()">
             <zb-cart-add product="product"></zb-cart-add>
             <zb-cart-delete product="product"></zb-cart-delete>
         </div>

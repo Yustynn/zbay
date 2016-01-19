@@ -20,9 +20,20 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ProductsController', function ($scope, products, categories) {
+app.controller('ProductsController', function ($scope, $element, products, categories, CartFactory) {
   $scope.products = products;
   $scope.categories = categories;
+  $scope.productRemove = true;
+
+  $scope.removeProduct = (product) => {
+    console.log("this is to remove the item from cart")
+    CartFactory.removeFromCart(product);
+    $scope.productRemove = true;
+    $scope.$apply()
+  }
+
+  $scope.isRemoved = () => {return $scope.productRemove;};
+
 
   // assigning product categories with category names
   // not doing a populate because of the way our backend is set up

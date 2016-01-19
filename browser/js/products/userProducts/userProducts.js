@@ -26,7 +26,9 @@ app.config($stateProvider => {
 });
 
 app.controller('UserProductCtrl', ($scope,  $stateParams) => {
-
+  // have access to $scope.categories from the products state
+  // there is an issue where if I create the cart from new adds, the
+  // category is not translated to the string tag and not the id
   // or more accurately, I would set the localStorage to be what is on the server
   // while backend cart does not exist the window localStorage will be current implementation
   $scope.products = JSON.parse(window.localStorage.getItem("cart"));
