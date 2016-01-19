@@ -25,6 +25,8 @@ router.get('/:id/reviews', mustBeLoggedIn, getDocsAndSend('Review','user'));
 
 router.get('/:id/orders', mustBeLoggedIn, getDocsAndSend('Order','user'));
 
+router.get('/:id/address', mustBeLoggedIn, getDocsAndSend('Address','user'));
+
 router.put('/:id', mustBeLoggedIn, getDocAndUpdateIfOwnerOrAdmin('User'));
 
 router.delete('/:id', mustBeLoggedIn, getDocAndDeleteIfOwnerOrAdmin('User'));
