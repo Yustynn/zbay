@@ -1,0 +1,20 @@
+<h3>Post New Item For Sale</h3>
+<form>
+    Title: <input type="text" ng-model="title">
+    <div class="dropdown category-dropdown">
+        <form>
+            <select name="" id="" ng-model="category" ng-options="category as category.name for category in categories">
+                <option value="">All Category</option>
+            </select>
+        </form>
+    </div>
+    Description: <input type="text" ng-model="description">
+    Price: <input type="text" ng-model="price">
+    Stock: <input type="text" ng-model="stock">
+    <button ng-click="createProduct()">Post for Sale</button>
+</form>
+
+<h3>Items For Sale</h3>
+<ul>
+    <li ng-repeat="product in productsForSale">{{product}}</li>
+</ul>

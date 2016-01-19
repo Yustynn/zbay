@@ -25,10 +25,10 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('UserProductCtrl', ($scope,  $stateParams, userProducts) => {
+app.controller('UserProductCtrl', ($scope,  $stateParams) => {
 
   // or more accurately, I would set the localStorage to be what is on the server
   // while backend cart does not exist the window localStorage will be current implementation
   $scope.products = JSON.parse(window.localStorage.getItem("cart"));
-  $scope.userProducts = userProducts;
+  //$scope.userProducts = userProducts;
 });

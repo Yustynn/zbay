@@ -12,12 +12,10 @@ app.factory('ProductFactory', (HelperFactory) => {
   };
 
   factory.getProduct = (id) => {
-    console.log("in get product");
     const obj = {
       url : url + (id ? id : ''),
       method : 'GET'
     };
-    console.log(obj);
     return HelperFactory.httpResponse(obj);
   };
 

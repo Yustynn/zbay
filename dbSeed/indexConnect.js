@@ -101,6 +101,20 @@ connectToDb
     });
     return Review.createAsync(reviewData);
   })
+  .then(function(reviews) {
+    // for every review
+    // find the user in that review
+    //return reviews.forEach(function(review) {
+    //  users.forEach(function(user) {
+    //    // so bad
+    //    if (user._id === review.user) {
+    //      user.reviews.push(review);
+    //      user.save();
+    //    }
+    //  })
+    //});
+
+  })
   .then(function() {
     // attaching categories and stock numbers with a product
     return Promise.all(products.map(function(product) {
@@ -114,6 +128,7 @@ connectToDb
     }));
   })
   .then(function () {
+    var orderPromises = [];
     for (var i = 0; i < 5; i++) {
       var items = [];
       for (var j = 0; j < 5; j++) {
@@ -126,10 +141,26 @@ connectToDb
 
       var order = new Order({
         user : getRandomFromArray(users),
-        orderItems : items
+        orderItems : items,
+        status : getRandomFromArray([ 'inCart', 'processing', 'shipped', 'delivered']),
+        emailStatus : getRandomFromArray(['processing', 'shipped', 'delivered'])
       });
-      order.save();
+       orderPromises.push(order.save());
     }
+    return Promise.all(orderPromises);
+  })
+  .then(function (orders) {
+
+   var updatedOrdersOnUser = [];
+    users.forEach(function(user) {
+      orders.forEach(function(order) {
+        if (user._id === order.user._id) {
+          user.orders.push(order);
+          updatedOrdersOnUser.push(user.save());
+        }
+      })
+    });
+    return Promise.all(updatedOrdersOnUser);
   })
   .then(function () {
     console.log(chalk.green('Seed successful!'));

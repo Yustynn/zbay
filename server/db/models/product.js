@@ -22,7 +22,11 @@ const schema = new mongoose.Schema({
   stock: {
     type: Number,
     default: 0
-  }
+  },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 // Sets default photo to first photo when no default photo is specified

@@ -1,21 +1,17 @@
-/**
- *  Get all categories and add a category
- *  Using $http instead of $http.get, $http.post for explicitness, aesthetics
- */
-app.factory('CategoryFactory', HelperFactory => {
+app.factory('OrderItemFactory', (HelperFactory) => {
   const factory = {};
-  const url = '/api/categories/';
+  const url = '/api/orderitem/';
 
-  factory.addCategory = (categoryInfo) => {
+  factory.createOrderItem = (payload) => {
     const obj = {
       url : url,
       method : 'POST',
-      data : categoryInfo
+      data : payload
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.getCategory = id => {
+  factory.getOrderItem = (id) => {
     const obj = {
       url : url + (id ? id : ''),
       method : 'GET'
@@ -23,16 +19,16 @@ app.factory('CategoryFactory', HelperFactory => {
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.updateCategory = (id, update) => {
+  factory.updateOrderItem = (id, payload) => {
     const obj = {
       url : url + id,
       method : 'PUT',
-      data : update
+      data : payload
     };
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.deleteCategory = id => {
+  factory.deleteOrderItem = (id) => {
     const obj = {
       url : url + id,
       method : 'DELETE'
