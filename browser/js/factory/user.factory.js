@@ -14,7 +14,31 @@ app.factory('UserFactory', (HelperFactory) => {
   factory.getUser = (id) => {
     const obj = {
       url : url + (id ? id : ''),
-      method : 'GET',
+      method : 'GET'
+    };
+    return HelperFactory.httpResponse(obj);
+  };
+
+    factory.getReviewsForUser = (userId) => {
+    const obj = {
+      url : url + userId + '/reviews',
+      method : 'GET'
+    };
+    return HelperFactory.httpResponse(obj);
+  };
+
+    factory.getProductsForUser = (userId) => {
+    const obj = {
+      url : url + userId + '/products',
+      method : 'GET'
+    };
+    return HelperFactory.httpResponse(obj);
+  };
+
+    factory.getOrdersForUser = (userId) => {
+    const obj = {
+      url : url + userId + '/orders',
+      method : 'GET'
     };
     return HelperFactory.httpResponse(obj);
   };

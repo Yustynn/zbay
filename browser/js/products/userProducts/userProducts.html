@@ -4,6 +4,6 @@
 <!-- there should be a purchase button -->
 <!-- if a user removes from cart, the page should update
 to not have that particular item any more-->
-<div class="row" ng-repeat="product in products">
+<div class="row" id="{{'cart-' + $index}}" ng-repeat="product in products track by $index">
     <partial-product class="col-md-6" product="product"></partial-product>
 </div>

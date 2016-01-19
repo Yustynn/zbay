@@ -19,18 +19,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" collapse="navCollapsed">
             <ul class="nav navbar-nav">
-                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                <li ng-repeat="item in items" ng-show="(!item.admin || user.isAdmin) && (!item.auth || isLoggedIn())">
                     <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                 </li>
             </ul>
-            <button ng-show="!user" ui-sref="login" class="btn login-button sign-in">Login</button>
-            <oauth-button service-provider='Google' ng-hide='user'></oauth-button>
+            <button ng-hide="user" ui-sref="login" class="btn login-button sign-in">Login</button>
+            <button ng-hide="user" ui-sref="signup" class="btn signup-button sign-up">Signup</button>
+            <oauth-button ng-hide='user' service-provider='Google'></oauth-button>
             <div ng-show="user" class="welcome">
                 <span>Welcome, {{ user.email }}!</span>
                 <a ng-click="logout()">Logout</a>
             </div>
             <zb-cart user="user"></zb-cart>
-
+            <button ui-sref="marketplace" ng-show="user">Click To View Marketplace</button>
 
             <searchbar>
             </searchbar>
