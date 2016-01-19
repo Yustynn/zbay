@@ -14,14 +14,11 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService, UserFactory, $state) => {
+app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService, UserFactory, $state, user) => {
 
+    $scope.user = user;
     $scope.showShipping = false;
     $scope.error = null;
-
-    var currentUser = AuthService.getLoggedInUser().then(function(user){
-        console.log('dat user doe ', user);
-    })
 
     if (!user) {
         console.log("No user Found");
