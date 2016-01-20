@@ -12,8 +12,6 @@ app.directive('categorydropdown', (CategoryFactory) => {
         .then( data => {
           scope.categories = data;
         });
-      // if someone picks All Category, category in the
-      // parameter will be null
       scope.category = "";
       scope.updateSelection = (category) => {
         scope.category = category;
