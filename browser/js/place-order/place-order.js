@@ -11,7 +11,7 @@ app.config(($stateProvider) => {
   });
 });
 //
-app.controller('PlaceOrderController', function($scope, $state, $stateParams, user, CartFactory, $modal, MandrillFactory) {
+app.controller('PlaceOrderController', function($scope, $state, $stateParams, user, CartFactory, $modal, MandrillFactory, $timeout) {
   // cart
   // user are available to cartFactory
   $scope.cartFactory = CartFactory;
@@ -37,9 +37,13 @@ app.controller('PlaceOrderController', function($scope, $state, $stateParams, us
 
     //send email
 
-    $modal.open({
-      template : '<completed-payment></completed-payment>'
-    });
+      var modal = $modal.open({
+          template : '<completed-payment></completed-payment>'
+      });
+      $timeout(() => {
+          modal.close();
+          $state.go('home');
+      }, 2000)
 
     MandrillFactory.sendEmailConfirmation({user: $scope.user, cart : CartFactory.cart});
     CartFactory.cart = [];
