@@ -25,12 +25,6 @@ app.controller('ProfileCtrl', ($scope, UserFactory, AddressFactory, $state, user
         $state.go('home');
     }
 
-    //AddressFactory.getAddress(user.address[0]._id)
-    //    .then(address => {
-    //        user.address = address;
-    //        console.log("address",address);
-    //    })
-
     UserFactory.getReviewsForUser(user._id)
         .then(reviewsArr => {
             $scope.reviews = reviewsArr;
