@@ -2,7 +2,6 @@
  * Created by Jon on 1/15/16.
  */
 app.config($stateProvider => {
-
     $stateProvider.state('userProfile', {
         url: '/profile',
         templateUrl: 'js/userProfile/userProfile.html',
@@ -15,8 +14,9 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
-
+app.controller('ProfileCtrl', ($scope, UserFactory, AddressFactory, $state, user) => {
+    console.log(user);
+    $scope.user = user;
     $scope.showShipping = false;
     $scope.error = null;
 
@@ -29,7 +29,7 @@ app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
         .then(reviewsArr => {
             $scope.reviews = reviewsArr;
         })
-        .then(null, (err) => { $scope.error = err});
+        .then(null, (err) => { $scope.error  = err});
 
     UserFactory.getProductsForUser(user._id)
         .then(productsArr => {
@@ -44,5 +44,4 @@ app.controller('ProfileCtrl', ($scope, $state, user, UserFactory) => {
             $scope.orders = ordersArr;
         })
         .then(null, (err) => { $scope.error = err});
-
 });

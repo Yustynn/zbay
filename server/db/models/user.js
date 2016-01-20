@@ -3,6 +3,14 @@ var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('lodash');
 
+const addressModel = {
+    line1: String,
+    line2 : String,
+    zip : String,
+    city : String,
+    state : String
+};
+
 var schema = new mongoose.Schema({
     name: {
         type: String,
@@ -42,14 +50,10 @@ var schema = new mongoose.Schema({
     google: {
         id: String
     },
-    address: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Address'
-    }],
-    products: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product'
-    }]
+    address: {
+        billingAddress: addressModel,
+        shippingAddress: addressModel
+    }
 });
 
 // method to remove sensitive information from user objects before sending them out

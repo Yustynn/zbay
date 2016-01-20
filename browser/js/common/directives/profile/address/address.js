@@ -4,8 +4,21 @@
 app.directive('zbAddress', () => {
     return {
         restrict: 'E',
-        scope: {},
+        scope: {
+            user: '='
+        },
         templateUrl: 'js/common/directives/profile/address/address.html',
-        link: function(scope) {}
+        controller: function ($scope, UserFactory, AddressFactory) {
+
+            $scope.saveAddress = function (user) {
+                console.log("user in saveAddy func", user);
+
+                UserFactory.updateUser(user._id, user)
+                    .then(newUserInfo => {
+                        console.log(newUserInfo);
+                        $scope.user = newUserInfo;
+                    });
+            }
+        }
     }
 });

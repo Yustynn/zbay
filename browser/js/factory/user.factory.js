@@ -16,12 +16,20 @@ app.factory('UserFactory', (HelperFactory) => {
       url : url + (id ? id : ''),
       method : 'GET'
     };
-    return HelperFactory.httpResponse(obj);
+    return HelperFactory.httpResponse(obj)
   };
 
     factory.getReviewsForUser = (userId) => {
     const obj = {
       url : url + userId + '/reviews',
+      method : 'GET'
+    };
+    return HelperFactory.httpResponse(obj);
+  };
+
+    factory.getAddressForUser = (userId) => {
+    const obj = {
+      url : url + userId + '/address',
       method : 'GET'
     };
     return HelperFactory.httpResponse(obj);

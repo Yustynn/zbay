@@ -2,6 +2,15 @@ app.factory('AddressFactory', (HelperFactory) => {
   const factory = {};
   const url = 'api/address/';
   // need to check that params works this way
+    factory.addAddress = (address) => {
+        const obj = {
+            url : url,
+            method : 'POST',
+            data : address
+        };
+        return HelperFactory.httpResponse(obj);
+    };
+
   factory.getAddress = (id) => {
     const obj = {
       url : url + (id ? id : ''),
