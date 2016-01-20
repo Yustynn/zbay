@@ -8,12 +8,18 @@ app.directive('zbAddress', () => {
             user: '='
         },
         templateUrl: 'js/common/directives/profile/address/address.html',
-        controller: function ($scope, UserFactory) {
+        controller: function ($scope, UserFactory, $timeout) {
+
+            $scope.updated = false;
 
             $scope.saveAddress = function (user) {
                 UserFactory.updateUser(user._id, user)
                     .then(newUserInfo => {
+                        $scope.updated = true;
                         $scope.user = newUserInfo;
+                        $timeout(() => {
+                            $scope.updated = false;
+                        }, 3000);
                     });
             }
         }

@@ -15,21 +15,21 @@ app.config($stateProvider => {
 
 app.controller('MarketplaceCtrl', ($scope, ProductFactory, CategoryFactory, UserFactory, user, $state) => {
 
+    if (!user) {
+        $state.go('home');
+    }
     $scope.productsForSale = [];
+
     $scope.showListing = false;
-
     $scope.removeProduct = function(product) {
-        var index = $scope.productsForSale.indexOf(product);
 
+        var index = $scope.productsForSale.indexOf(product);
         ProductFactory.deleteProduct(product._id)
             .then(() => {
                 $scope.productsForSale.splice(index, 1);
             });
     };
 
-    if (!user) {
-        $state.go('home');
-    }
 
 
     UserFactory.getProductsForUser(user._id)
