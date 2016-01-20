@@ -3,24 +3,24 @@
     <form novalidate class="simple-form">
         <div>
             <h3>Billing Address</h3>
-            Full Name: <input type="text" ng-model="user.name"/><br />
-            Address Line1: <input type="text" ng-model="user.address.billingAddress.line1" /><br />
-            Address Line2: <input type="text" ng-model="user.address.billingAddress.line2" /><br />
-            City: <input type="text" ng-model="user.address.billingAddress.city"/><br />
-            State: <input type="text" ng-model="user.address.billingAddress.state"/>
-            Zip Code: <input type="text" ng-model="user.address.billingAddress.zip"/>
+            Full Name: <div><input type="text" ng-model="user.name"/></div>
+            Address Line1: <div><input type="text" ng-model="user.address.billingAddress.line1" /></div>
+            Address Line2: <div><input type="text" ng-model="user.address.billingAddress.line2" /></div>
+            City: <div><input type="text" ng-model="user.address.billingAddress.city"/></div>
+            State: <div><input type="text" ng-model="user.address.billingAddress.state"/></div>
+            Zip Code: <div><input type="text" ng-model="user.address.billingAddress.zip"/></div>
         </div>
-        Select if shipping does not match billing<input type="checkbox" ng-model="showShipping">
+        Select if shipping does not match billing   <input type="checkbox" ng-model="showShipping">
         <div ng-show="showShipping">
             <h3>Shipping Address</h3>
-            Full Name: <input type="text" ng-model="user.name" /><br />
-            Address Line1: <input type="text" ng-model="user.address.shippingAddress.line1" /><br />
-            Address Line2: <input type="text" ng-model="user.address.shippingAddress.line2" /><br />
-            City: <input type="text" ng-model="user.address.shippingAddress.city"/><br />
-            State: <input type="text" ng-model="user.address.shippingAddress.state"/>
-            Zip Code: <input type="text" ng-model="user.address.shippingAddress.zip"/>
+            Full Name: <div><input type="text" ng-model="user.name" /></div>
+            Address Line1: <div><input type="text" ng-model="user.address.shippingAddress.line1" /></div>
+            Address Line2: <div><input type="text" ng-model="user.address.shippingAddress.line2" /></div>
+            City: <div><input type="text" ng-model="user.address.shippingAddress.city"/></div>
+            State: <div><input type="text" ng-model="user.address.shippingAddress.state"/></div>
+            Zip Code: <div><input type="text" ng-model="user.address.shippingAddress.zip"/></div>
         </div>
     </form>
     <!--<pre>user = {{user | json}}</pre>-->
-    <button ng-click="saveAddress(user)">Update User Info</button>
+    <button class="btn btn-primary" ng-click="saveAddress(user)">Update User Info</button>
 </div>
