@@ -5,12 +5,21 @@
   @include clearfix;
 
   p {
-    width: 40%;
+    float : left;
+    width: 60%;
     margin: 0 auto;
     text-align: justify;
     font-size: 22px;
     font-weight: 300;
     float: left;
+    padding : 50px;
+  }
+
+  .zombie {
+    float: left;
+
+    width : 30%;
+    margin : 0 auto;
   }
 
 }
