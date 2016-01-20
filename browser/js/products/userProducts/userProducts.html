@@ -7,3 +7,4 @@ to not have that particular item any more-->
 <div class="row" id="{{'cart-' + $index}}" ng-repeat="product in products track by $index">
     <partial-product class="col-md-6" product="product"></partial-product>
 </div>
+<button ng-click="checkout()">Checkout</button>

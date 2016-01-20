@@ -6,19 +6,17 @@ app.directive('review', function(ProductFactory,UserFactory){
 			var productId = scope.product['_id'];
 			let reviews;
 
-				console.log(123)
 			ProductFactory.getProductReviews(productId).then(function(reviews){
-				//we got reviews based on the product.. but one problem.. we need username 
+				//we got reviews based on the product.. but one problem.. we need username
 				//but we only have userId for now.. we'll do Promise.all
 
-				console.log('cha cha ',reviews);
-				// console.log('woom woom ',reviews);
 				scope.reviews = [];
 				for(var x=0; x<reviews.length; x++)
 				{
 					var entry = {};
 					entry['text'] = reviews[x]['text'];
 					entry['user'] = reviews[x]['user']['name'];
+          entry['starRating'] = reviews[x]['starRating'];
 					scope.reviews.push(entry);
 				}
 
@@ -42,7 +40,7 @@ app.directive('review', function(ProductFactory,UserFactory){
 			// 	console.log(123)
 			// })
 			// .then(null, error => { console.error(error) });
-		
+
 	})
 }
 }})

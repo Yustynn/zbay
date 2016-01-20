@@ -34,10 +34,10 @@ app.directive('partialProduct', (ReviewFactory,CartFactory, $state, AuthService)
         elem.remove();
       }
 
-      ReviewFactory.getReviewByProduct(scope.product._id)
+      ReviewFactory.getReview(scope.product._id)
         .then( reviews => {
-          console.log(scope.product);
-          console.log(scope.product["_id"]);
+          //console.log(scope.product);
+          //console.log(scope.product["_id"]);
           scope.reviews = reviews;
         })
     }
