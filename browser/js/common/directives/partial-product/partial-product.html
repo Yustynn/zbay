@@ -8,12 +8,6 @@
     </div>
     <div class="text">
         <div class="description">{{ product['description'] }}</div>
-        <!--Category:-->
-        <!--<div class="category" ng-repeat="category in product['categories'] track by $index">-->
-            <!--<a ui-sref="products.category({category : category })">-->
-                <!--<div class="category-tags">{{category}}</div>-->
-            <!--</a>-->
-        <!--</div>-->
         Category :
         <div class="category">
             <a ui-sref="products.category({category : product['categories'][0] })">

@@ -39,7 +39,8 @@ app.controller('ProductSingleCtrl', ($scope, product, AUTH_EVENTS, AuthService, 
             postObj['text'] = $scope.review.text;
             ReviewFactory.createReview(postObj)
                 .then(function(obj){
-                    console.log('objj ', obj);
+                    // Sean why do you do this?
+                    //console.log('objj ', obj);
                 })
 
         })

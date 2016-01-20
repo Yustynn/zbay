@@ -30,8 +30,6 @@ app.controller('MarketplaceCtrl', ($scope, ProductFactory, CategoryFactory, User
             });
     };
 
-
-
     UserFactory.getProductsForUser(user._id)
         .then(productsForUser => {
             $scope.productsForSale = productsForUser;

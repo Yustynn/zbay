@@ -8,7 +8,7 @@ app.directive('zbAddress', () => {
             user: '='
         },
         templateUrl: 'js/common/directives/profile/address/address.html',
-        controller: function ($scope, UserFactory, $timeout) {
+        controller: ($scope, UserFactory, $timeout) => {
 
             $scope.updated = false;
 

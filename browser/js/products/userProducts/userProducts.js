@@ -16,14 +16,6 @@ app.config($stateProvider => {
         user : (AuthService) => {
           return AuthService.getLoggedInUser().then( user => user );
         }
-        // we don't have a backend cart yet
-        // have a way to add to a user cart on server
-        //userProducts : (UserFactory, $stateParams) => {
-        //  return UserFactory.getUser($stateParams.name)
-        //    .then(function (user) {
-        //      return user.cart
-        //    })
-        //}
       }
     });
 });

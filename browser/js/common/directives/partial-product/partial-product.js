@@ -36,8 +36,6 @@ app.directive('partialProduct', (ReviewFactory,CartFactory, $state, AuthService)
 
       ReviewFactory.getReview(scope.product._id)
         .then( reviews => {
-          //console.log(scope.product);
-          //console.log(scope.product["_id"]);
           scope.reviews = reviews;
         })
     }
