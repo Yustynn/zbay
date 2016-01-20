@@ -11,17 +11,15 @@ app.config(($stateProvider) => {
   });
 });
 //
-app.controller('PlaceOrderController', function($scope, $state, $stateParams, user, CartFactory, $modal, MandrillFactory, $timeout) {
+app.controller('PlaceOrderController', ($scope, $state, $stateParams, user, CartFactory, $modal, MandrillFactory, $timeout) => {
   // cart
   // user are available to cartFactory
   $scope.cartFactory = CartFactory;
   $scope.user = $scope.cartFactory.user;
   $scope.cart = $scope.cartFactory.cart;
-  console.log($scope.cartFactory);
-  console.log(user);
   $scope.totalPrice = 0;
+
   $scope.cart.forEach(function(product) {
-    console.log(typeof product.price);
     $scope.totalPrice += parseFloat(product.price, 10);
   })
 
@@ -29,12 +27,7 @@ app.controller('PlaceOrderController', function($scope, $state, $stateParams, us
     $state.go("products.user");
   }
 
-  $scope.submitPayment = function() {
-    //console.log($scope.cardNumber);
-    //console.log($scope.cardExpiry);
-    //console.log($scope.cardCVC);
-    //$scope.go("products")
-
+  $scope.submitPayment = () => {
     //send email
 
       var modal = $modal.open({

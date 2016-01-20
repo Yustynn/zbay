@@ -7,11 +7,13 @@ app.directive('zbCart', ['CartFactory', 'OrderFactory', 'OrderItemFactory', 'Pro
     },
     templateUrl : 'js/common/directives/zbCart/zbCart.html',
     link : (scope) => {
+
+      // This was pre- modification of the populate ability into the origin crudhelper
+      // so many bad requests
       scope.cartfactory = CartFactory;
       CategoryFactory.getCategory().then(categories => {
         //each has name and _id
         scope.categories = categories;
-        console.log(scope.categories);
       });
       // when you know the product and the quantity
       // one big function :(
@@ -78,14 +80,6 @@ app.directive('zbCart', ['CartFactory', 'OrderFactory', 'OrderItemFactory', 'Pro
           })
       }
 
-      //if local storage is
-      // less than backend, use localstorage
-
-      //scope.$on(AUTH_EVENTS.loginSuccess, function(e){
-      //  // respond to event here
-      //  console.log("in the cart checking for login")
-      //  scope.updateCart;
-      //});
 
       scope.updateCart();
     }
