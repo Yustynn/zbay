@@ -15,7 +15,7 @@ app.config($stateProvider => {
 });
 
 app.controller('ProfileCtrl', ($scope, UserFactory, AddressFactory, $state, user) => {
-
+    console.log(user);
     $scope.user = user;
     $scope.showShipping = false;
     $scope.error = null;
@@ -25,11 +25,11 @@ app.controller('ProfileCtrl', ($scope, UserFactory, AddressFactory, $state, user
         $state.go('home');
     }
 
-    AddressFactory.getAddress(user.address[0]._id)
-        .then(address => {
-            user.address = address;
-            console.log("address",address);
-        })
+    //AddressFactory.getAddress(user.address[0]._id)
+    //    .then(address => {
+    //        user.address = address;
+    //        console.log("address",address);
+    //    })
 
     UserFactory.getReviewsForUser(user._id)
         .then(reviewsArr => {
