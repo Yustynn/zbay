@@ -17,8 +17,8 @@ app.directive('searchbar', ($state) => {
         let childScope = childElem.isolateScope();
         // we have the search term and the category name at this point
         // generate the page with results
-        console.log(scope.search);
-        console.log(childScope.category.name || "");
+        //console.log(scope.search);
+        //console.log(childScope.category.name || "");
 
         // need a child state that goes to the products.search
         // have not made that child state
