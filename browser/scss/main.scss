@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Cabin:400,500|Old+Standard+TT:400,700);
+
+// VARIABLES
+$sans-serif: 'Cabin', sans-serif;
+$serif: 'Old Standard TT', serif;
+
 * {
   box-sizing: border-box;
 }
@@ -15,9 +21,25 @@ body {
   }
 }
 
+#header-auth {
+  padding-right: 70px
+}
+
 #main {
   padding-top: 60px;
   margin: 0 auto;
+}
+
+body.home {
+  background-image: url('assets/bg.png');
+  background-size: cover;
+}
+
+#home h1 {
+  color: white;
+  font-family: $sans-serif;
+  margin-top: 20px;
+  letter-spacing: 10px;
 }
 
 @import 'directives/main';
