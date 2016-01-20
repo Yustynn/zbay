@@ -9,7 +9,14 @@ app.config($stateProvider => {
 		},
 		controller: function($scope,review, ProductFactory){
 			$scope.review = review;
-			var revId = review['_id']
+			$scope.starArray = [];
+			var num = $scope.review.starRating;
+			for(var x=0; x<num; x++)
+			{
+				$scope.starArray.push(1);
+			}
+			console.log($scope.starArray);
+			var revId = review['_id'];
 
 		}
 	})
