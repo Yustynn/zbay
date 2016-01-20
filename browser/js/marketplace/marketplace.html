@@ -1,6 +1,9 @@
+<div class="market-place">
 <h3>Post New Item For Sale</h3>
 <form>
-    Title: <input type="text" ng-model="title">
+    <div class="title">
+    Title: <div><input type="text" ng-model="title"></div>
+    </div>
     <div class="dropdown category-dropdown">
         <form>
             <select name="" id="" ng-model="category" ng-options="category as category.name for category in categories">
@@ -8,10 +11,18 @@
             </select>
         </form>
     </div>
-    Description: <input type="text" ng-model="description">
-    Price: <input type="text" ng-model="price">
-    Stock: <input type="text" ng-model="stock">
-    <button ng-click="createProduct()">Post for Sale</button>
+    <div class="description">
+        Description: <div><input type="text" ng-model="description"></div>
+    </div>
+    <div class="price">
+    Price: <div><input type="text" ng-model="price"></div>
+    </div>
+    <div class="stock">
+    Stock: <div><input type="text" ng-model="stock"></div>
+    </div>
+    <div class="post">
+    <button class="btn btn-primary" ng-click="createProduct()">Post for Sale</button>
+    </div>
 </form>
 
 <h3>Items For Sale</h3>
@@ -21,11 +32,12 @@
         <br>
         Product Description: {{product.description}}
         <br>
-        <button ng-click="showListing = !showListing">View Listing</button>
+        <button class="btn btn-primary" ng-click="showListing = !showListing">View Listing</button>
         <zb-sell-product ng-show="showListing" product="product"></zb-sell-product>
-        <button ng-click="removeProduct(product)">Remove Listing</button>
+        <button class="btn btn-primary" ng-click="removeProduct(product)">Remove Listing</button>
         <!--<button ng-click="editSale(product)">Edit Listing</button>-->
         <br>
         <br>
     </li>
 </ul>
+</div>
