@@ -7,8 +7,7 @@ app.directive('zbUserReviews', () => {
         scope: {
             reviews: '='
         },
-        templateUrl: 'js/common/directives/profile/userReviews/userReviews.html',
-        link: function(scope) {}
+        templateUrl: 'js/common/directives/profile/userReviews/userReviews.html'
     };
 });
 no

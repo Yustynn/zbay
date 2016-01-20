@@ -10,6 +10,6 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('SingleProduct', ($scope, $stateParams) => {
+app.controller('SingleProduct', () => {
 
 });

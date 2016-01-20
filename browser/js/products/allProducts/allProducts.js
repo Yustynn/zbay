@@ -2,11 +2,6 @@ app.config( ($stateProvider) => {
 
   $stateProvider.state('products.all', {
     url: '',
-    templateUrl: 'js/products/allProducts/allProducts.html',
-    controller: 'AllProductsCtrl'
+    templateUrl: 'js/products/allProducts/allProducts.html'
   });
-});
-
-app.controller('AllProductsCtrl', ($scope, $stateParams) => {
-  //console.log("all products sub state");
 });

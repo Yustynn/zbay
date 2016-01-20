@@ -15,32 +15,28 @@ app.config($stateProvider => {
 });
 
 app.controller('ProfileCtrl', ($scope, UserFactory, AddressFactory, $state, user) => {
-    console.log(user);
+
     $scope.user = user;
     $scope.showShipping = false;
     $scope.error = null;
 
     if (!user) {
-        console.log("No user Found");
         $state.go('home');
     }
 
     UserFactory.getReviewsForUser(user._id)
         .then(reviewsArr => {
             $scope.reviews = reviewsArr;
-        })
-        .then(null, (err) => { $scope.error  = err});
+        });
 
     UserFactory.getProductsForUser(user._id)
         .then(productsArr => {
-            //console.log("Products", productsArr);
             $scope.products = productsArr;
         })
         .then(null, (err) => { $scope.error = err});
 
     UserFactory.getOrdersForUser(user._id)
         .then(ordersArr => {
-            //console.log("Orders", ordersArr);
             $scope.orders = ordersArr;
         })
         .then(null, (err) => { $scope.error = err});

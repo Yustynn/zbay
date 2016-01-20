@@ -8,6 +8,5 @@ app.directive('zbMyProducts', () => {
             products: '='
         },
         templateUrl: 'js/common/directives/profile/myProducts/myProducts.html',
-        link: function(scope) {}
     };
 });

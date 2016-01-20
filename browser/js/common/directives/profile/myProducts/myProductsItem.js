@@ -7,7 +7,7 @@ app.directive('zbMyProductsItem', function() {
         scope: {
             product: '='
         },
-        template: '<a ng-href="/products/{{product._id}}">Product Name: {{product.title}}</a> {{ product.description}}',
+        template: '<a ui-sref="marketplace" ">Product Name: {{product.title}}</a> {{ product.description}}',
         link: function () {
         }
     };

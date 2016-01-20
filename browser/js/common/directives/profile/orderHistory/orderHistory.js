@@ -7,8 +7,6 @@ app.directive('zbOrderHistory', () => {
         scope: {
             orders: '=' // orders array from controller
         },
-        templateUrl: 'js/common/directives/profile/orderHistory/orderHistory.html',
-        link: function(scope) {}
-
+        templateUrl: 'js/common/directives/profile/orderHistory/orderHistory.html'
     };
 });

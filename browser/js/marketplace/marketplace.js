@@ -15,23 +15,21 @@ app.config($stateProvider => {
 
 app.controller('MarketplaceCtrl', ($scope, ProductFactory, CategoryFactory, UserFactory, user, $state) => {
 
+    if (!user) {
+        $state.go('home');
+    }
     $scope.productsForSale = [];
+
     $scope.showListing = false;
-
     $scope.removeProduct = function(product) {
-        var index = $scope.productsForSale.indexOf(product);
-        console.log("Scope.products before", $scope.productsForSale);
 
+        var index = $scope.productsForSale.indexOf(product);
         ProductFactory.deleteProduct(product._id)
-            .then((removedProduct) => {
+            .then(() => {
                 $scope.productsForSale.splice(index, 1);
             });
     };
 
-    if (!user) {
-        //console.log("No user Found");
-        $state.go('home');
-    }
 
 
     UserFactory.getProductsForUser(user._id)
@@ -53,7 +51,6 @@ app.controller('MarketplaceCtrl', ($scope, ProductFactory, CategoryFactory, User
             stock: $scope.stock
         })
         .then(newProduct => {
-            //console.dir(newProduct);
             $scope.productsForSale.push(newProduct);
         })
     }
