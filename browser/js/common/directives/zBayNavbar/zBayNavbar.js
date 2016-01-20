@@ -11,13 +11,8 @@ app.directive('zbayNavbar', function ($rootScope, AuthService, AUTH_EVENTS, $sta
         { label: 'About', state: 'about' },
         { label : 'Products', state : 'products.all' },
         { label : 'Marketplace', state : 'marketplace' },
-        {
-          label: 'yTest Product Single',
-          state: 'productSingle({id: "569ad514a2f306d50a7d230f"})'
-        },
-        { label: 'Members Only', state: 'membersOnly', auth: true },
         { label: 'Admin', state: 'admin', admin: true },
-        { label: 'Profile', state: 'userProfile' }
+        { label: 'Profile', state: 'userProfile', auth: true }
       ];
 
       scope.user = null;
