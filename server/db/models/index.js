@@ -7,4 +7,3 @@ require('./product');
 require('./order');
 require('./orderItem');
 require('./category');
-require('./address');

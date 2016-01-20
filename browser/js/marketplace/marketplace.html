@@ -16,5 +16,9 @@
 
 <h3>Items For Sale</h3>
 <ul>
-    <li ng-repeat="product in productsForSale">{{product}}</li>
+    <li ng-repeat="product in productsForSale">
+        Product Name: {{product.title}}
+        Product Description: {{product.description}}
+        <pre>{{product}}</pre>
+    </li>
 </ul>

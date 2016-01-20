@@ -8,23 +8,17 @@ app.directive('zbAddress', () => {
             user: '='
         },
         templateUrl: 'js/common/directives/profile/address/address.html',
-        controller: function($scope, UserFactory, AddressFactory) {
+        controller: function ($scope, UserFactory, AddressFactory) {
 
-            $scope.saveAddress = function(user) {
-                console.log("Inside save address")
-                console.log("user",user)
+            $scope.saveAddress = function (user) {
+                console.log("user in saveAddy func", user);
 
-                AddressFactory.addAddress(user.address)
-                    .then(newAddress => {
-                        UserFactory.updateUser(user._id, {address: newAddress._id, name: user.name})
-                            .then(newUserInfo => {
-                                console.log(newUserInfo);
-                                $scope.user = newUserInfo;
-                            });
-                    })
-
-
-            };
+                UserFactory.updateUser(user._id, user)
+                    .then(newUserInfo => {
+                        console.log(newUserInfo);
+                        $scope.user = newUserInfo;
+                    });
+            }
         }
     }
 });
