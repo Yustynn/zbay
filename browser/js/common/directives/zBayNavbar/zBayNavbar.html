@@ -23,9 +23,11 @@
                     <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                 </li>
             </ul>
-            <button ng-hide="user" ui-sref="login" class="btn login-button sign-in">Login</button>
-            <button ng-hide="user" ui-sref="signup" class="btn signup-button sign-up">Signup</button>
-            <oauth-button ng-hide='user' service-provider='Google'></oauth-button>
+            <div id='header-auth' class='pull-right'>
+              <button ng-hide="user" ui-sref="login" class="btn login-button sign-in">Login</button>
+              <button ng-hide="user" ui-sref="signup" class="btn login-button sign-in">Signup</button>
+              <oauth-button ng-hide='user' service-provider='Google'></oauth-button>
+            </div>
             <div ng-show="user" class="welcome">
                 <span>Welcome, {{ user.email }}!</span>
                 <a ng-click="logout()">Logout</a>
