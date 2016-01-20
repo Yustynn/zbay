@@ -79,7 +79,7 @@ export const getDocAndDelete = ModelStr => (req, res, next) => {
   const id = req.params.id;
   const Model = mongoose.model(ModelStr);
 
-  Model.findByIdAndRemove(req.params.id)
+  Model.findByIdAndRemove(id)
     .then(document => {
       if (!document) next()();
       else return res.json(document)

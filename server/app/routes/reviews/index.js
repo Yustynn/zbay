@@ -3,7 +3,7 @@
 var router = require('express').Router();
 module.exports = router;
 
-import { mustBeAdmin, mustBeLoggedIn } from '../../../helpers/routesPermissions'
+import { mustBeLoggedIn } from '../../../helpers/routesPermissions'
 import {
 	createDoc,
 	getDocsAndSend,

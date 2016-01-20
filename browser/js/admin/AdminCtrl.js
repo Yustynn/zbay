@@ -6,16 +6,14 @@ app.controller('AdminCtrl', ($scope, categories, CategoryFactory, UserFactory, u
       $scope.adminifyError = 'User ' + email + ' Not Found!';
     }
     else {
-      console.log(user)
       UserFactory.updateUser(user._id, { isAdmin: true })
-      .then(updatedUser => {
+      .then(() => {
         user.isAdmin = true; // Update local version to reflect DB
         delete $scope.adminifyError;
         $scope.adminifySuccess = 'User ' + email + ' Adminified!'
       })
-    };
-  }
-  console.log(users)
+    }
+  };
   $scope.categories = categories;
   $scope.categoryInfo = {};
 

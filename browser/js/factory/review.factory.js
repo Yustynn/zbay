@@ -31,7 +31,7 @@ app.factory('ReviewFactory', (HelperFactory) => {
     return HelperFactory.httpResponse(obj);
   };
 
-  factory.deleteReview = () => {
+  factory.deleteReview = (id) => {
     const obj = {
       url : url + id,
       method : 'DELETE'

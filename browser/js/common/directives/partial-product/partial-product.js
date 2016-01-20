@@ -32,14 +32,14 @@ app.directive('partialProduct', (ReviewFactory,CartFactory, $state, AuthService)
       scope.removeFromCart = (product) => {
         CartFactory.removeFromCart(product);
         elem.remove();
-      }
+      };
 
-      ReviewFactory.getReviewByProduct(scope.product._id)
-        .then( reviews => {
-          console.log(scope.product);
-          console.log(scope.product["_id"]);
-          scope.reviews = reviews;
-        })
+      //ReviewFactory.getReviewByProduct(scope.product._id)
+      //  .then( reviews => {
+      //    console.log(scope.product);
+      //    console.log(scope.product["_id"]);
+      //    scope.reviews = reviews;
+      //  })
     }
   }
 });

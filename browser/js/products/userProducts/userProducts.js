@@ -26,7 +26,7 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('UserProductCtrl', ($scope,  $stateParams) => {
+app.controller('UserProductCtrl', ($scope) => {
   // have access to $scope.categories from the products state
   // there is an issue where if I create the cart from new adds, the
   // category is not translated to the string tag and not the id

@@ -5,9 +5,6 @@ app.directive('zbayCarousel', () => {
     scope : {
       products : '=',
       height : '@'
-    },
-    link : (scope) => {
-
     }
   }
 });

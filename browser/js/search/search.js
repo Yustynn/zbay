@@ -10,6 +10,6 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('SearchCtrl', $scope => {
+app.controller('SearchCtrl', () => {
 
 });

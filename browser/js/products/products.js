@@ -20,7 +20,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ProductsController', function ($scope, $element, products, categories, CartFactory) {
+app.controller('ProductsController', function ($scope, $element, products, categories) {
   $scope.products = products;
   $scope.categories = categories;
 
