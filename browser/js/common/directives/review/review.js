@@ -18,6 +18,12 @@ app.directive('review', function(ProductFactory,UserFactory){
 				{
 					var entry = {};
 					entry['text'] = reviews[x]['text'];
+					var numStars = reviews[x]['starRating'];
+					entry['starIndicator'] = [];
+					for(var y=0; y< numStars; y++)
+					{
+						entry['starIndicator'].push(1);
+					} 
 					entry['user'] = reviews[x]['user']['name'];
 					scope.reviews.push(entry);
 				}
