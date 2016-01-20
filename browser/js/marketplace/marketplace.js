@@ -12,14 +12,27 @@ app.config($stateProvider => {
     });
 });
 
+
 app.controller('MarketplaceCtrl', ($scope, ProductFactory, CategoryFactory, UserFactory, user, $state) => {
+
+    $scope.productsForSale = [];
+    $scope.showListing = false;
+
+    $scope.removeProduct = function(product) {
+        var index = $scope.productsForSale.indexOf(product);
+        console.log("Scope.products before", $scope.productsForSale);
+
+        ProductFactory.deleteProduct(product._id)
+            .then((removedProduct) => {
+                $scope.productsForSale.splice(index, 1);
+            });
+    };
 
     if (!user) {
         //console.log("No user Found");
         $state.go('home');
     }
 
-    $scope.productsForSale = [];
 
     UserFactory.getProductsForUser(user._id)
         .then(productsForUser => {

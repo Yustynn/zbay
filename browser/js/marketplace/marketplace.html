@@ -16,5 +16,16 @@
 
 <h3>Items For Sale</h3>
 <ul>
-    <li ng-repeat="product in productsForSale">{{product}}</li>
+    <li ng-repeat="product in productsForSale">
+        Product Name: {{product.title}}
+        <br>
+        Product Description: {{product.description}}
+        <br>
+        <button ng-click="showListing = !showListing">View Listing</button>
+        <zb-sell-product ng-show="showListing" product="product"></zb-sell-product>
+        <button ng-click="removeProduct(product)">Remove Listing</button>
+        <!--<button ng-click="editSale(product)">Edit Listing</button>-->
+        <br>
+        <br>
+    </li>
 </ul>

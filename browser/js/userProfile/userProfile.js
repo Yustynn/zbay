@@ -14,8 +14,8 @@ app.config($stateProvider => {
     });
 });
 
-app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService, UserFactory, $state, user) => {
-
+app.controller('ProfileCtrl', ($scope, UserFactory, AddressFactory, $state, user) => {
+    console.log(user);
     $scope.user = user;
     $scope.showShipping = false;
     $scope.error = null;
@@ -29,13 +29,15 @@ app.controller('ProfileCtrl', ($scope, AUTH_EVENTS, AuthService, UserFactory, $s
         .then(reviewsArr => {
             $scope.reviews = reviewsArr;
         })
-        .then(null, (err) => { $scope.error = err});
+        .then(null, (err) => { $scope.error  = err});
+
     UserFactory.getProductsForUser(user._id)
         .then(productsArr => {
             //console.log("Products", productsArr);
             $scope.products = productsArr;
         })
         .then(null, (err) => { $scope.error = err});
+
     UserFactory.getOrdersForUser(user._id)
         .then(ordersArr => {
             //console.log("Orders", ordersArr);
