@@ -1,4 +1,4 @@
 <h3>Reviews</h3>
 <ul>
-    <li ng-repeat="review in reviews"><zb-user-review-item review="review">{{review}}</zb-user-review-item></li>
+    <li ng-repeat="review in reviews"><zb-user-review-item review="review" ui-sref='singularRev({id: review._id})'>{{review}}</zb-user-review-item></li>
 </ul>
