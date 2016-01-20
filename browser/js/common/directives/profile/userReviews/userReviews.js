@@ -10,4 +10,3 @@ app.directive('zbUserReviews', () => {
         templateUrl: 'js/common/directives/profile/userReviews/userReviews.html'
     };
 });
-no
